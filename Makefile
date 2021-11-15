@@ -1,16 +1,19 @@
 NAME	=	minishell
 HEADER	=	./headers/minishell.h
 SRCS	=	./srcs/minishell.c
-CC		=	GCC
+CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
-SANFLAG	=	-fsanaitize=address -g
+SANFLAG	=	-fsanitize=address -g
 OBJ		=	$(SRCS:.c=.o)
 
 %.o:	%.c	$(HEADER)
-		$(CC) -c -o $@ $< $c $(FLAGS)
+		$(CC) -c -o $@ $< $c $(CFLAGS)
 
 .PHONY:	all
-all		$(NAME)
+all:	$(NAME)
+
+$(NAME):$(OBJ)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -lreadline
 
 .PHONY:	clean
 clean:
@@ -21,8 +24,8 @@ fclean:	clean
 		$(RM) $(NAME)
 
 .PHONY:	re
-re:		clean all
+re:		fclean all
 
 .PHONY:	san
-san:	re
-		$(NAME) $(SANFLAG)
+san:	fclean all
+		$(CC) $(CFLAGS) $(SANFLAG) -o $(NAME) $(OBJ) -lreadline
