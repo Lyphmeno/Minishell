@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/15 15:53:36 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/17 15:07:58 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
+
+//bite
 
 int	main(int argc, char **argv, char **env)
 {
