@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/18 17:06:55 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/18 16:49:28 by hlevi             #+#    #+#             */
+/*   Updated: 2021/11/18 16:53:25 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_msh	mini;
+	size_t	i;
+	char	*str;
 
-	(void)env;
-	(void)argc;
-	(void)argv;
-	while (1)
+	i = 0;
+	str = (char *)b;
+	while (i < len)
 	{
-		mini.line = readline("$> ");
-		parsing_base(&mini);
-		free(mini.line);
+		str[i] = (char)c;
+		i++;
 	}
-	return (0);
+	return (b);
 }

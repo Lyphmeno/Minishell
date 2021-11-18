@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/15 15:50:57 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/18 17:05:06 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdlib.h>
 # include <fcntl.h>
 # include <string.h>
 # include <sys/types.h>
@@ -23,13 +22,32 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+# define ECHO "echo"
+# define CD "cd"
+# define PWD "pwd"
+# define EXPORT "export"
+# define UNSET "unset"
+# define ENV "env"
+# define EXIT "exit"
+
 typedef struct s_msh
 {
 	int		in;
 	int		out;
 	int		exit;
-	char	*minipath;
 	char	*line;
+	char	**linetab;
 }			t_msh;
+
+// LIB
+void	*ft_calloc(size_t count, size_t size);
+void	*ft_memset(void *b, int c, size_t len);
+void	**ft_newarray(size_t w, size_t h, size_t size);
+char	**ft_split(const char *str, char c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		ft_strlen(char *str);
+
+// PARSING
+void	parsing_base(t_msh *mini);
 
 #endif

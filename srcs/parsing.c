@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/18 17:06:55 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
+/*   Updated: 2021/11/18 17:09:59 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+void	parsing_base(t_msh *mini)
 {
-	t_msh	mini;
+	int	i;
 
-	(void)env;
-	(void)argc;
-	(void)argv;
-	while (1)
+	i = 0;
+	mini->linetab = ft_split(mini->line, ' ');
+	while (mini->linetab[i] != NULL)
 	{
-		mini.line = readline("$> ");
-		parsing_base(&mini);
-		free(mini.line);
+		printf("%s\n", mini->linetab[i]);
+		i++;
 	}
-	return (0);
 }
