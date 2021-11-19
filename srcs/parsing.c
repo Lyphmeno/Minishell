@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/19 01:06:26 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
+/*   Updated: 2021/11/19 01:00:29 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	err_handler(int err_code)
+void	parsing_base(t_msh *mini)
 {
-	if (err_code == RL_EOF)
-		printf("bad_path\n");
-	return (-1);
-}
+	int	i;
 
-int	main(int argc, char **argv, char **env)
-{
-	t_msh	mini;
-
-	(void)env;
-	(void)argc;
-	(void)argv;
-	while (1)
+	i = 0;
+	mini->linetab = ft_split(mini->line, ' ');
+	while (mini->linetab[i] != NULL)
 	{
-		mini.line = readline("$> ");
-		if (!mini.line)
-			break ;
-		printf("%s\n", mini.line);
-		parsing_base(&mini);
-		free(mini.line);
+		printf("%s\n", mini->linetab[i]);
+		i++;
 	}
-	return (0);
 }
