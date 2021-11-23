@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/11/18 17:05:06 by hlevi            ###   ########.fr       */
+=======
+/*   Updated: 2021/11/17 15:41:25 by jchene           ###   ########.fr       */
+>>>>>>> c7c5b20725f36838f4766931d0dda4f3d21e1c19
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# define MAX_PATH 200
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
