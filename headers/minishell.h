@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 15:18:56 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/23 15:55:49 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ typedef struct s_msh
 	char	**linetab;
 }			t_msh;
 
+typedef struct s_elem
+{
+	char			*word;
+	struct s_elem	*next;
+}				t_elem;
+
+typedef struct s_start
+{
+	int		init;
+	t_elem	*start;
+}				t_start;
+
 // LIB
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
@@ -49,6 +61,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strlen(char *str);
 
 // PARSING
-void	parsing_base(t_msh *mini);
+void	parsing_base(void);
 
+t_msh	*s_mini(void);
 #endif
