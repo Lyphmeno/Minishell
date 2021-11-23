@@ -6,12 +6,13 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/19 01:15:50 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/23 15:18:56 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+# define MAX_PATH 200
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -22,11 +23,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-//var defines
-# define MAX_PATH 200
-
-//error defines
-# define RL_EOF 1
 # define ECHO "echo"
 # define CD "cd"
 # define PWD "pwd"
