@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   static.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 16:08:02 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/23 16:02:25 by hlevi             #+#    #+#             */
+/*   Updated: 2021/11/23 16:03:15 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+t_msh	*s_mini(void)
 {
-	(void)env;
-	(void)argc;
-	(void)argv;
-	while (1)
-	{
-		s_mini()->line = readline("$> ");
-		parsing_base();
-		free(s_mini()->line);
-	}
-	return (0);
+	static t_msh	mini;
+
+	return (&mini);
 }

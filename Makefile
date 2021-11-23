@@ -2,6 +2,7 @@ NAME	=	minishell
 HEADER	=	./headers/minishell.h
 SRCS	=	./srcs/minishell.c\
 			./srcs/parsing.c\
+			./srcs/static.c\
 			./lib/ft_calloc.c\
 			./lib/ft_memset.c\
 			./lib/ft_newarray.c\

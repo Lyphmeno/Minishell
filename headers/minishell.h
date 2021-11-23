@@ -6,7 +6,11 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/11/23 15:55:49 by jchene           ###   ########.fr       */
+=======
+/*   Updated: 2021/11/23 16:03:39 by hlevi            ###   ########.fr       */
+>>>>>>> hugo
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +56,8 @@ typedef struct s_start
 	t_elem	*start;
 }				t_start;
 
+// STATIC
+t_msh	*s_mini(void);
 // LIB
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
