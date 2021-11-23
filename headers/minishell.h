@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 15:10:30 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/23 16:03:39 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_msh
 	char	**linetab;
 }			t_msh;
 
+// STATIC
+t_msh	*s_mini(void);
 // LIB
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
@@ -48,6 +50,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strlen(char *str);
 
 // PARSING
-void	parsing_base(t_msh *mini);
+void	parsing_base(void);
 
 #endif
