@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 13:27:50 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 13:33:25 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ t_elem	*ft_lst_last_elem(t_start *start);
 // PARSING
 void	parsing_base(void);
 
-t_msh	*mini(void);
+t_msh	*st_mini(void);
+t_start	*st_words(void);
 #endif

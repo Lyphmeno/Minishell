@@ -6,20 +6,20 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:02:25 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 16:54:33 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 13:31:59 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-t_msh	*mini(void)
+t_msh	*st_mini(void)
 {
 	static t_msh	mini;
 
 	return (&mini);
 }
 
-t_start	*words(void)
+t_start	*st_words(void)
 {
 	static t_start	words;
 
