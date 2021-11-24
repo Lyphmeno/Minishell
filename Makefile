@@ -13,6 +13,8 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_lst_last_elem.c\
 			./lib/ft_lst_new_elem.c\
 			./lib/ft_lstlen.c\
+			./lib/ft_lst_show.c\
+			./lib/ft_lst_join.c\
 			./lib/ft_memset.c\
 			./lib/ft_newarray.c\
 			./lib/ft_split.c\
@@ -23,7 +25,7 @@ CC		=	gcc
 
 CFLAGS	=	-Wall -Wextra -Werror
 
-SANFLAG	=	-g -fsanitize=address
+SANFLAG	=	-fsanitize=address
 
 OBJ		=	$(SRCS:.c=.o)
 
@@ -31,7 +33,7 @@ OBJ		=	$(SRCS:.c=.o)
 all:		$(NAME)
 
 %.o:%.c
-			$(CC) -c -o $@ $< $c $(CFLAGS)
+			$(CC) -g -c -o $@ $< $c $(CFLAGS)
 
 $(NAME):	$(OBJ) $(HEADER)
 			$(CC) $(CFLAGS) -o $(NAME) $(OBJ) -lreadline

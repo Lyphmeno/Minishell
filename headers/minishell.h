@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 15:40:08 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 16:51:17 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_msh
 	int		out;
 	int		exit;
 	char	*line;
-	char	**linetab;
 	t_start	*words;
 }			t_msh;
 
@@ -71,6 +70,8 @@ void	ft_lst_add_top(t_elem *elem, t_start *start);
 void	ft_lst_add_bot(t_elem *elem, t_start *start);
 void	ft_lst_free(t_start *start);
 int		ft_lstlen(t_start *start);
+void	ft_lst_show(t_start *stack);
+int		ft_lst_join(void);
 t_elem	*ft_lst_before_last(t_start *start);
 t_elem	*ft_lst_last_elem(t_start *start);
 
