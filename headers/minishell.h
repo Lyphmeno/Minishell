@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 14:30:09 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 14:32:11 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void	ft_lst_new_elem(char *word, t_start *start);
 void	ft_lst_add_top(t_elem *elem, t_start *start);
 void	ft_lst_add_bot(t_elem *elem, t_start *start);
 void	ft_lst_free(t_start *start);
+int		ft_lstlen(t_start *start);
 t_elem	*ft_lst_before_last(t_start *start);
 t_elem	*ft_lst_last_elem(t_start *start);
 
