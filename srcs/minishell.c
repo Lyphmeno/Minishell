@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 16:08:56 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 12:28:16 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	while (1)
 	{
-		s_mini()->line = readline("$> ");
+		mini()->line = readline("$> ");
 		parsing_base();
-		free(s_mini()->line);
+		free(mini()->line);
 	}
 	return (0);
 }

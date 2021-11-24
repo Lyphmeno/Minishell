@@ -6,11 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/11/23 15:55:49 by jchene           ###   ########.fr       */
-=======
-/*   Updated: 2021/11/23 16:03:39 by hlevi            ###   ########.fr       */
->>>>>>> hugo
+/*   Updated: 2021/11/24 12:28:06 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +49,12 @@ typedef struct s_elem
 typedef struct s_start
 {
 	int		init;
-	t_elem	*start;
+	t_elem	*first;
 }				t_start;
 
 // STATIC
 t_msh	*s_mini(void);
+
 // LIB
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
@@ -66,8 +63,14 @@ char	**ft_split(const char *str, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strlen(char *str);
 
+// LINKED LISTS
+void	ft_lst_new_elem(char *word, t_start *start);
+void	ft_lst_add_top(t_elem *elem, t_start *start);
+void	ft_lst_add_bot(t_elem *elem, t_start *start);
+t_elem	*ft_lst_last_elem(t_start *start);
+
 // PARSING
 void	parsing_base(void);
 
-t_msh	*s_mini(void);
+t_msh	*mini(void);
 #endif
