@@ -6,12 +6,12 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 12:46:19 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/24 13:38:37 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
-
+ 
 void	parsing_base(void)
 {
 	int	i;
