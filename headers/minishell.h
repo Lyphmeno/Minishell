@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 12:28:06 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 13:27:50 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_msh
 	int		exit;
 	char	*line;
 	char	**linetab;
+	t_start	*words;
 }			t_msh;
 
 typedef struct s_elem
