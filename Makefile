@@ -6,6 +6,7 @@ SRCS	=	./srcs/minishell.c\
 			./srcs/parsing.c\
 			./srcs/static.c\
 			./lib/ft_calloc.c\
+			./lib/ft_charset.c\
 			./lib/ft_lst_add_bot.c\
 			./lib/ft_lst_add_top.c\
 			./lib/ft_lst_before_last.c\
