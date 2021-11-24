@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lst_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:10 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:29:12 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/24 14:11:07 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/24 14:19:23 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+void	ft_lst_free(t_start *start)
 {
-	size_t	i;
-	char	*tmp;
+	int		len;
+	t_elem	*last;
 
-	i = 0;
-	if (!src && !dst)
-		return (0);
-	tmp = (char *)src;
-	while (src[i] && i < dstsize - 1 && dstsize > 0)
+	len = ft_lstlen(start) - 1;
+	last = last_elem(start);
+	while (len-- > 0)
 	{
-		dst[i] = tmp[i];
-		i++;
+		last = last_elem(start);
+		ft_lst_before_last(start)->next = NULL;
+		free(last);
 	}
-	if (dstsize > 0)
-		dst[i] = '\0';
-	return (ft_strlen((char *)src));
+	free(start->first);
 }

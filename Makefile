@@ -1,14 +1,7 @@
 NAME	=	minishell
 HEADER	=	./headers/minishell.h
-SRCS	=	./srcs/minishell.c\
-			./srcs/parsing.c\
-			./srcs/static.c\
-			./lib/ft_calloc.c\
-			./lib/ft_memset.c\
-			./lib/ft_newarray.c\
-			./lib/ft_split.c\
-			./lib/ft_strlcpy.c\
-			./lib/ft_strlen.c
+SRCS	=	./srcs/*.c \
+			./lib/*.c
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
 SANFLAG	=	-fsanitize=address -g

@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 13:33:25 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 14:30:09 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,6 @@
 # define ENV "env"
 # define EXIT "exit"
 
-typedef struct s_msh
-{
-	int		in;
-	int		out;
-	int		exit;
-	char	*line;
-	char	**linetab;
-	t_start	*words;
-}			t_msh;
-
 typedef struct s_elem
 {
 	char			*word;
@@ -53,6 +43,16 @@ typedef struct s_start
 	t_elem	*first;
 }				t_start;
 
+typedef struct s_msh
+{
+	int		in;
+	int		out;
+	int		exit;
+	char	*line;
+	char	**linetab;
+	t_start	*words;
+}			t_msh;
+
 // STATIC
 t_msh	*s_mini(void);
 
@@ -61,6 +61,7 @@ void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 void	**ft_newarray(size_t w, size_t h, size_t size);
 char	**ft_split(const char *str, char c);
+int		ft_lst_split(const char *str, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strlen(char *str);
 
@@ -68,6 +69,8 @@ int		ft_strlen(char *str);
 void	ft_lst_new_elem(char *word, t_start *start);
 void	ft_lst_add_top(t_elem *elem, t_start *start);
 void	ft_lst_add_bot(t_elem *elem, t_start *start);
+void	ft_lst_free(t_start *start);
+t_elem	*ft_lst_before_last(t_start *start);
 t_elem	*ft_lst_last_elem(t_start *start);
 
 // PARSING

@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:47:24 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 13:32:37 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/24 14:24:49 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,29 +78,27 @@ char	**ft_split(const char *str, char c)
 	return (tab);
 }
 
-t_start	*ft_lst_split(const char *str, char c)
+int	ft_lst_split(const char *str, char c)
 {
-	t_start	*word;
-	int		i;
 	int		j;
 	int		nb_words;
 	int		word_len;
+	char	*word;
 
-	i = 0;
 	j = 0;
 	if (!str)
-		return (NULL);
+		return (-1);
 	nb_words = nbr_of_words(str, c);
-	tab = (char **)ft_newarray(sizeof(char *), nb_words + 1, sizeof(char *));
-	while (i < nb_words)
+	while (nb_words > 0)
 	{
 		while (str[j] == c && str[j])
 			j++;
 		word_len = word_size(&str[j], c);
-		tab[i] = (char *)ft_calloc(sizeof(char), word_len + 1);
-		ft_strlcpy(&tab[i++][0], &str[j], word_len + 1);
+		word = (char *)ft_calloc(sizeof(char), word_len + 1);
+		ft_strlcpy(&word[0], &str[j], word_len + 1);
 		j += word_len;
-	}	
-	tab[i] = NULL;
-	return (tab);
+		nb_words--;
+		ft_lst_new_elem(word, st_words());
+	}
+	return (0);
 }
