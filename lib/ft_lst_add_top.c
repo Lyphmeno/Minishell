@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   static.c                                           :+:      :+:    :+:   */
+/*   ft_lst_add_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 16:02:25 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 16:54:33 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/23 15:29:38 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/23 16:40:29 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-t_msh	*mini(void)
+void	ft_lst_add_front(t_elem *elem, t_start *start)
 {
-	static t_msh	mini;
-
-	return (&mini);
-}
-
-t_start	*words(void)
-{
-	static t_start	words;
-
-	if (words.init != 1)
+	if (start->first == NULL)
+		start->first = elem;
+	else
 	{
-		words.init = 1;
-		words.first = NULL;
+		elem->next = start->first;
+		start->first = elem;
 	}
-	return (&words);
 }

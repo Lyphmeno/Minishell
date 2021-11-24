@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   static.c                                           :+:      :+:    :+:   */
+/*   ft_lst_new_elem.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 16:02:25 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 16:54:33 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/23 15:29:43 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/24 12:26:58 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-t_msh	*mini(void)
+int	new_elem(char *word, t_start *start)
 {
-	static t_msh	mini;
+	t_elem	*elem;
 
-	return (&mini);
-}
-
-t_start	*words(void)
-{
-	static t_start	words;
-
-	if (words.init != 1)
-	{
-		words.init = 1;
-		words.first = NULL;
-	}
-	return (&words);
+	elem = malloc(sizeof(t_elem));
+	if (!elem)
+		return (-1);
+	elem->word = word;
+	elem->next = NULL;
+	ft_lst_add_bot(elem, start);
+	return (0);
 }
