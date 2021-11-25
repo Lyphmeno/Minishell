@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:11:07 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:21:14 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/25 12:22:00 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_lst_free(t_start *start)
 	{
 		last = ft_lst_last_elem(start);
 		ft_lst_before_last(start)->next = NULL;
-		free(last);tag:"remote-menu"
+		free(last);
 	}
 	free(start->first);
 	start->first = NULL;
