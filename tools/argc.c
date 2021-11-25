@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   argc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/25 12:18:57 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minishell.h"
+#include <stdio.h>
 
-void	parsing_base(void)
+int	main(int argc, char **argv)
 {
-	ft_lst_split(st_mini()->line, ' ');
-	ft_lst_show(st_words());
-	if (!ft_lstlen(st_words()))
-		return ;
-	ft_lst_join();
-	ft_lst_free(st_words());
+	(void)argv;
+	printf("%d\n", argc - 1);
+	return (0);
 }
