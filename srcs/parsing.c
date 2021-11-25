@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 13:43:53 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/24 14:38:00 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	parsing_base(void)
 	int	i;
 
 	i = 0;
-	mini()->linetab = ft_split(mini()->line, ' ');
-	while (mini()->linetab[i] != NULL)
+	st_mini()->linetab = ft_split(st_mini()->line, ' ');
+	ft_lst_split(st_mini()->line, ' ');
+	while (st_mini()->linetab[i] != NULL)
 	{
-		printf("%s\n", mini()->linetab[i]);
+		printf("%s\n", st_mini()->linetab[i]);
 		i++;
 	}
 }

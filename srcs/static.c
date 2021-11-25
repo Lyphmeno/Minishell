@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   static.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 16:02:25 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 16:54:33 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/24 14:30:00 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/24 14:38:21 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-t_msh	*mini(void)
+t_msh	*st_mini(void)
 {
 	static t_msh	mini;
 
 	return (&mini);
 }
 
-t_start	*words(void)
+t_start	*st_words(void)
 {
 	static t_start	words;
 

@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:47:24 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/23 14:21:31 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/24 14:35:33 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,32 @@ char	**ft_split(const char *str, char c)
 		tab[i] = (char *)ft_calloc(sizeof(char), word_len + 1);
 		ft_strlcpy(&tab[i++][0], &str[j], word_len + 1);
 		j += word_len;
-	}
+	}	
 	tab[i] = NULL;
 	return (tab);
+}
+
+int	ft_lst_split(const char *str, char c)
+{
+	int		j;
+	int		nb_words;
+	int		word_len;
+	char	*word;
+
+	j = 0;
+	if (!str)
+		return (-1);
+	nb_words = nbr_of_words(str, c);
+	while (nb_words > 0)
+	{
+		while (str[j] == c && str[j])
+			j++;
+		word_len = word_size(&str[j], c);
+		word = (char *)ft_calloc(sizeof(char), word_len + 1);
+		ft_strlcpy(&word[0], &str[j], word_len + 1);
+		j += word_len;
+		nb_words--;
+		ft_lst_new_elem(word, st_words());
+	}
+	return (0);
 }
