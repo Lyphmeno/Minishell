@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_first_occur.c                               :+:      :+:    :+:   */
+/*   ft_lst_next_occur.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:15:26 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 21:07:53 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/25 23:33:40 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-//A modifier en first occur
-/*int	ft_lst_count_occur(t_start *lst, char c)
+t_elem	*ft_lst_next_occur(t_elem *elem, char c)
 {
-	int		quotes_nb;
 	t_elem	*tmp;
 
-	quotes_nb = 0;
-	tmp = lst->first;
+	tmp = elem;
 	if (!tmp)
-		return (0);
+		return (NULL);
 	while (tmp->next)
 	{
-		if (ft_charset(tmp->word, '"'))
-			quotes_nb++;
+		if (ft_charset(tmp->word, c))
+			return (tmp);
 		tmp = tmp->next;
 	}
-	return (quotes_nb);
-}*/
+	if (ft_charset(tmp->word, c))
+		return (tmp);
+	return (NULL);
+}
