@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_count_occur.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/27 19:46:46 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/27 17:02:33 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 19:46:05 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	parsing_base(void)
+//Count occurences of char c in char *str
+int	ft_count_occur(char *str, char c)
 {
-	ft_lst_split(st_mini()->line, ' ');
-	ft_lst_show(st_words());
-	if (!ft_lstlen(st_words()))
-		return ;
-	ft_lst_join();
-	ft_lst_show(st_words());
-	ft_lst_free(st_words());
+	int	occur_nb;
+	int	i;
+
+	occur_nb = 0;
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == c)
+			occur_nb++;
+		i++;
+	}
+	return (occur_nb);
 }

@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 19:13:34 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/27 20:09:02 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_elem
 {
 	char			*word;
 	struct s_elem	*next;
+	struct s_elem	*prev;
 }				t_elem;
 
 typedef struct s_start
@@ -64,18 +65,21 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_lst_split(const char *str, char c);
 int		ft_strlen(char *str);
 int		ft_charset(char *charset, char c);
+int		ft_count_occur(char *str, char c);
 
 // LINKED LISTS
 int		ft_lstlen(t_start *start);
 int		ft_lst_join(void);
 int		ft_lst_count_occur(t_start *lst, char c);
 int		ft_lst_new_elem(char *word, t_start *start);
+int		ft_lst_join_size(t_elem *start, t_elem *stop);
 void	ft_lst_add_top(t_elem *elem, t_start *start);
 void	ft_lst_add_bot(t_elem *elem, t_start *start);
 void	ft_lst_free(t_start *start);
 void	ft_lst_show(t_start *stack);
 t_elem	*ft_lst_before_last(t_start *start);
 t_elem	*ft_lst_last_elem(t_start *start);
+t_elem	*ft_lst_next_occur(t_elem *elem, char c);
 
 // PARSING
 void	parsing_base(void);

@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_join.c                                      :+:      :+:    :+:   */
+/*   ft_lst_join_size.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:40:52 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/27 18:31:16 by jchene           ###   ########.fr       */
+/*   Created: 2021/11/27 19:59:05 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 20:01:18 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_lst_join(void)
+int	ft_lst_join_size(t_elem *start, t_elem *stop)
 {
-	t_elem	*open_word;
-	t_elem	*close_word;
+	int		len;
 	t_elem	*tmp;
 
-	tmp = st_words()->first;
-	if (((ft_lst_count_occur(st_words(), '"')) % 2) != 0)
-		return (-1);
-	while (tmp)
+	len = 0;
+	tmp = start;
+	if (!tmp)
+		return (0);
+	while (tmp != stop)
 	{
-		while (tmp && ft_count_occur(tmp->word, '"') % 2 == 0)
-			tmp = tmp->next;
-		if (!tmp)
-			break ;
-		open_word = tmp;
-		tmp = tmp->next;
-		while (ft_charset(tmp->word, '"') == 0)
-			tmp = tmp->next;
-		close_word = tmp;
-		ft_lst_elem_join(open_word, close_word);
+		len += ft_strlen(tmp->word);
 		tmp = tmp->next;
 	}
-	return (0);
+	len += ft_strlen(tmp->word);
+	return (len);
 }

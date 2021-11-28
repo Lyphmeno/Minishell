@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 19:10:14 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/26 21:33:43 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/27 17:07:39 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 //Count occurences of char c in every char * of list lst
 int	ft_lst_count_occur(t_start *lst, char c)
 {
-	int		quotes_nb;
+	int		occur_nb;
 	t_elem	*tmp;
 
-	quotes_nb = 0;
+	occur_nb = 0;
 	tmp = lst->first;
 	if (!tmp)
 		return (0);
-	while (tmp->next)
+	while (tmp)
 	{
-		if (ft_charset(tmp->word, '"'))
-			quotes_nb++;
+		occur_nb += ft_count_occur(tmp->word, c);
 		tmp = tmp->next;
 	}
-	return (quotes_nb);
+	return (occur_nb);
 }
