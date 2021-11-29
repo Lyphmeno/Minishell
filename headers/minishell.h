@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/29 02:13:46 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/29 16:31:57 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		ft_lst_join_size(t_elem *start, t_elem *stop);
 int		ft_lst_elem_join(t_start *lst, t_elem *start, t_elem *stop);
 void	ft_lst_add_top(t_elem *elem, t_start *start);
 void	ft_lst_add_bot(t_elem *elem, t_start *start);
+void	ft_lst_free_elem(t_elem *elem, t_start *lst);
 void	ft_lst_free(t_start *start);
 void	ft_lst_show(t_start *stack);
 t_elem	*ft_lst_new_elem(char *word);
