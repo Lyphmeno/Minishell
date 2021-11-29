@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:47:24 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/28 23:16:51 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/29 02:09:15 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ int	ft_lst_split(const char *str, char c)
 		ft_strlcpy(&word[0], &str[j], word_len + 1);
 		j += word_len;
 		nb_words--;
-		ft_lst_new_elem(word, st_words());
+		elem = ft_lst_new_elem(word);
+		ft_lst_add_bot(elem, st_words());
 	}
 	return (0);
 }
