@@ -4,24 +4,26 @@ Minishell - Linked Lists Functions
 .SH STRUCTURES SYNOPSIS
 
 .nf
-.B struct t_start
+.B struct	t_start
 .fi
 .I int
-init
+	   init
 .br
 .I t_elem
-*first
+	*first
 
 .nf
-.B struct t_elem
+.B struct	t_elem
 .fi
 .I char
-*word
+	  *word
 .br
 .I t_elem
-*prev
+	*prev
+.br
 .I t_elem
-*next
+	*next
+
 
 .SH FUNCTIONS SYNOPSIS
 
@@ -104,7 +106,7 @@ init
 .I t_elem *elem, char c
 );
 
-.SH STRUCTURES DESCRIPTION
+.SH STRUCTURES DESCRIPTIONS
 
 .B t_start
 structure is the starting element of any linked list.
@@ -135,11 +137,11 @@ member contains the address of the next element in the linked list,
 .B NULL
 if there is none.
 
-.SH FUNCTIONS DESCRIPTION
+.SH FUNCTIONS DESCRIPTIONS
 
 .B ft_lstlen
 takes as parameter a linked list starting point
-.I t_start *start
+.I start
 and returs the number of elements in the list, 0 if
 .I start
 is
@@ -148,7 +150,7 @@ is
 
 .B ft_lst_count_occur
 takes as parameters a linked list starting point
-.I t_start *lst
+.I lst
 and a character
 .I c
 and returns the total number of occurences of character 
@@ -156,5 +158,29 @@ and returns the total number of occurences of character
 in every word of the list, returns 0 if
 .I lst
 does not contain any element.
+
+.B ft_lst_join
+join words containing quotes after first split.
+.fi
+Returns 0 is everything is good, -1 otherwise. 
+
+.B ft_lst_join_size
+takes as parameters a starting element
+.I start
+ans a stoping element
+.I stop
+and returns the number of elements between both, including them.
+.I start
+must be before
+.I stop
+in the list and both have to be in the same list.
+
+.B ft_lst_elem_join
+joins all elements between
+.I start
+and 
+.I stop
+included, in a single word.
+Free all joined elements and insert new element in their place.
 
 .B WORK IN PROGRESS HERE
