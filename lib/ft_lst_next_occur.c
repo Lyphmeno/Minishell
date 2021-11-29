@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_new_elem.c                                  :+:      :+:    :+:   */
+/*   ft_lst_next_occur.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:29:43 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/29 14:26:16 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/24 19:15:26 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 19:46:15 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-//Create, malloc and return the address of a new element
-t_elem	*ft_lst_new_elem(char *word)
+t_elem	*ft_lst_next_occur(t_elem *elem, char c)
 {
-	t_elem	*elem;
+	t_elem	*tmp;
 
-	elem = malloc(sizeof(t_elem));
-	if (!elem)
+	tmp = elem;
+	if (!tmp)
 		return (NULL);
-	elem->word = word;
-	elem->next = NULL;
-	elem->prev = NULL;
-	return (elem);
+	while (tmp)
+	{
+		if (ft_charset(tmp->word, c))
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }

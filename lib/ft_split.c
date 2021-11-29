@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:47:24 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/25 12:19:49 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/29 14:26:35 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	ft_lst_split(const char *str, char c)
 	int		nb_words;
 	int		word_len;
 	char	*word;
+	t_elem	*elem;
 
 	j = 0;
 	if (!str)
@@ -98,7 +99,8 @@ int	ft_lst_split(const char *str, char c)
 		ft_strlcpy(&word[0], &str[j], word_len + 1);
 		j += word_len;
 		nb_words--;
-		ft_lst_new_elem(word, st_words());
+		elem = ft_lst_new_elem(word);
+		ft_lst_add_bot(elem, st_words());
 	}
 	return (0);
 }

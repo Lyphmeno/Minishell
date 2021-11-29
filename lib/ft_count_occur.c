@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_new_elem.c                                  :+:      :+:    :+:   */
+/*   ft_count_occur.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:29:43 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/29 14:26:16 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/27 17:02:33 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 19:46:05 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-//Create, malloc and return the address of a new element
-t_elem	*ft_lst_new_elem(char *word)
+//Count occurences of char c in char *str
+int	ft_count_occur(char *str, char c)
 {
-	t_elem	*elem;
+	int	occur_nb;
+	int	i;
 
-	elem = malloc(sizeof(t_elem));
-	if (!elem)
-		return (NULL);
-	elem->word = word;
-	elem->next = NULL;
-	elem->prev = NULL;
-	return (elem);
+	occur_nb = 0;
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == c)
+			occur_nb++;
+		i++;
+	}
+	return (occur_nb);
 }

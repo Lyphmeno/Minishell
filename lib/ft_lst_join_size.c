@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_new_elem.c                                  :+:      :+:    :+:   */
+/*   ft_lst_join_size.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:29:43 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/29 14:26:16 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/27 19:59:05 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 20:01:18 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-//Create, malloc and return the address of a new element
-t_elem	*ft_lst_new_elem(char *word)
+int	ft_lst_join_size(t_elem *start, t_elem *stop)
 {
-	t_elem	*elem;
+	int		len;
+	t_elem	*tmp;
 
-	elem = malloc(sizeof(t_elem));
-	if (!elem)
-		return (NULL);
-	elem->word = word;
-	elem->next = NULL;
-	elem->prev = NULL;
-	return (elem);
+	len = 0;
+	tmp = start;
+	if (!tmp)
+		return (0);
+	while (tmp != stop)
+	{
+		len += ft_strlen(tmp->word);
+		tmp = tmp->next;
+	}
+	len += ft_strlen(tmp->word);
+	return (len);
 }
