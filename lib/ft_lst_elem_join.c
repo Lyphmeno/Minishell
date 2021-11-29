@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:19:35 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/28 01:34:47 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/28 21:38:27 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_lst_elem_join(t_start *lst, t_elem *start, t_elem *stop)
 	full_len = ft_lst_join_size(start, stop);
 	new_word = (char *)malloc(sizeof(char)
 			* (ft_lst_join_size(start, stop) + 1));
+	
 	if (!new_word)
 		return (-1);
 	tmp = lst->first;

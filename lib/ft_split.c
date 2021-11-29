@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:47:24 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 15:53:26 by jchene           ###   ########.fr       */
+/*   Updated: 2021/11/28 23:16:51 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	ft_lst_split(const char *str, char c)
 	int		nb_words;
 	int		word_len;
 	char	*word;
+	t_elem	*elem;
 
 	j = 0;
 	if (!str)
