@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/25 12:19:53 by hlevi            ###   ########.fr       */
+/*   Updated: 2021/11/30 15:15:33 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv, char **env)
 	while (1)
 	{
 		st_mini()->line = readline("$> ");
-		parsing_base();
+		//parsing_base();
 		free(st_mini()->line);
 	}
 	return (0);
