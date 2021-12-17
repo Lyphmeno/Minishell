@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:19:35 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/29 16:32:15 by jchene           ###   ########.fr       */
+/*   Updated: 2021/12/14 22:16:07 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_lst_elem_join(t_start *lst, t_elem *start, t_elem *stop)
 			* (ft_lst_join_size(start, stop) + 1));
 	if (!new_word)
 		return (-1);
+	
 	//WORK IN PROGRESS HERE
 	tmp = lst->first;
 	while (tmp->next != start);
