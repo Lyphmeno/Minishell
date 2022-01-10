@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:00:39 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 14:59:49 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:21:20 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	add_env(char *name, char *value, t_env **env)
 		new->prev = count;
 		count->next = new;
 	}
-
 }
 
 t_env	*parse_env(char **envp)

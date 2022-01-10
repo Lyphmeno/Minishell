@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 14:33:01 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:19:13 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct s_env
 	struct s_env	*next;
 	struct s_env	*prev;
 }				t_env;
-
 
 typedef struct s_elem
 {

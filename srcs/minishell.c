@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 15:17:57 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:20:13 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,12 @@ void	print_env(t_env *env)
 	}
 }
 
-/*void	sighandler(int sig)
-{
-
-}*/
-
 int	main(int argc, char **argv, char **envp)
 {
+	t_env	*env;
+
 	(void)argc;
 	(void)argv;
-	t_env	*env;
-	//signal(SIGINT, sighandler);
-
 	env = NULL;
 	env = parse_env(envp);
 	print_env(env);
