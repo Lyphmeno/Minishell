@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 15:20:13 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/10 15:44:29 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,15 @@ void	print_env(t_env *env)
 int	main(int argc, char **argv, char **envp)
 {
 	t_env	*env;
+	char	*test;
 
 	(void)argc;
 	(void)argv;
 	env = NULL;
 	env = parse_env(envp);
 	print_env(env);
+	test = ft_strdup(get_env("SHELL", env));
+	printf("test = %s\n", test);
 	while (1)
 	{
 		st_mini()->line = readline("$> ");

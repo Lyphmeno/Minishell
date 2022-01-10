@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 11:44:40 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 15:40:16 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/10 15:40:51 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/10 15:41:57 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-char	*get_env(char *name, t_env *env)
+int	ft_strcmp(char *s1, char *s2)
 {
-	while (env != NULL)
-	{
-		if (ft_strcmp(name, env->key) == 0)
-			return (env->value);
-		env = env->next;
-	}
-	return (NULL);
+	int	i;
+
+	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (-129);
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((int)s1[i] - (int)s2[i]);
 }

@@ -14,6 +14,7 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_memcpy.c\
 			./lib/ft_newarray.c\
 			./lib/ft_strlcpy.c\
+			./lib/ft_strcmp.c\
 			./lib/ft_strlen.c\
 			./lib/ft_strdup.c\
 			# ./srcs/parsing.c\
