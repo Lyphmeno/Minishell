@@ -4,9 +4,16 @@ HEADER	=	./headers/minishell.h
 
 SRCS	=	./srcs/minishell.c\
 			./srcs/static.c\
+			./builtin/bin_echo.c\
+			./builtin/bin_pwd.c\
+			./env/get_env.c\
+			./env/parsing_env.c\
 			./lib/ft_calloc.c\
 			./lib/ft_charset.c\
 			./lib/ft_memset.c\
+			./lib/ft_newarray.c\
+			./lib/ft_strlcpy.c\
+			./lib/ft_strlen.c\
 			# ./srcs/parsing.c\
 			# ./lib/ft_lst_count_occur.c\
 			# ./lib/ft_lst_elem_join.c\
@@ -20,10 +27,7 @@ SRCS	=	./srcs/minishell.c\
 			# ./lib/ft_lstlen.c\
 			# ./lib/ft_lst_show.c\
 			# ./lib/ft_lst_join.c\
-			# ./lib/ft_newarray.c\
-			# ./lib/ft_split.c\
-			# ./lib/ft_strlcpy.c\
-			# ./lib/ft_strlen.c
+			#./lib/ft_split.c\
 
 CC		=	gcc
 

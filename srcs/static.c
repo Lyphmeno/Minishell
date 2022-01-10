@@ -6,11 +6,18 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:30:00 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:38:21 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/10 12:36:41 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
+
+t_env	*st_env(void)
+{
+	static t_env	env;
+
+	return (&env);
+}
 
 t_msh	*st_mini(void)
 {

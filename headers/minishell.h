@@ -6,13 +6,13 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/30 15:16:12 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/10 13:10:22 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-# define MAX_PATH 200
+# define MAX_PATH 1024
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -30,6 +30,15 @@
 # define UNSET "unset"
 # define ENV "env"
 # define EXIT "exit"
+
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+	struct s_env	*prev;
+}				t_env;
+
 
 typedef struct s_elem
 {
@@ -56,6 +65,7 @@ typedef struct s_msh
 // STATIC
 t_msh	*st_mini(void);
 t_start	*st_words(void);
+t_env	*st_env(void);
 // LIB
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
@@ -66,7 +76,6 @@ int		ft_lst_split(const char *str, char c);
 int		ft_strlen(char *str);
 int		ft_charset(char *charset, char c);
 int		ft_count_occur(char *str, char c);
-
 // LINKED LISTS
 int		ft_lstlen(t_start *start);
 int		ft_lst_count_occur(t_start *lst, char c);
@@ -81,8 +90,12 @@ t_elem	*ft_lst_new_elem(char *word);
 t_elem	*ft_lst_before_last(t_start *start);
 t_elem	*ft_lst_last_elem(t_start *start);
 t_elem	*ft_lst_next_occur(t_elem *elem, char c);
-
 // PARSING
 void	parsing_base(void);
+// BUILTIN
+int		bin_pwd(void);
+void	bin_echo(char *text, int nl);
+// ENV
+t_env	parse_env(char **envp);
 
 #endif

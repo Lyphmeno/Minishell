@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   parsing_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 13:09:41 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/10 12:00:39 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/10 13:10:46 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-/*void	sighandler(int sig)
+void	add_env(char *name, char *value, t_env **env )
 {
 
-}*/
+}
 
-int	main(int argc, char **argv, char **envp)
+t_env	parse_env(char **envp)
 {
-	(void)argc;
-	(void)argv;
-	//signal(SIGINT, sighandler);
+	t_env	env;
+	int		i;
 
-	*(st_env()) = parse_env(envp);
-	while (1)
+	i = 0;
+	env = 0;
+	while (envp[i])
 	{
-		st_mini()->line = readline("$> ");
-		//parsing_base();
-		free(st_mini()->line);
+
 	}
-	return (0);
+	return (env);
 }
