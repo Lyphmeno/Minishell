@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 13:10:22 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/10 14:33:01 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int		ft_lst_split(const char *str, char c);
 int		ft_strlen(char *str);
 int		ft_charset(char *charset, char c);
 int		ft_count_occur(char *str, char c);
+char	*ft_strdup(char *s);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 // LINKED LISTS
 int		ft_lstlen(t_start *start);
 int		ft_lst_count_occur(t_start *lst, char c);
@@ -96,6 +98,7 @@ void	parsing_base(void);
 int		bin_pwd(void);
 void	bin_echo(char *text, int nl);
 // ENV
-t_env	parse_env(char **envp);
+t_env	*parse_env(char **envp);
+void	add_env(char *name, char *value, t_env **env);
 
 #endif

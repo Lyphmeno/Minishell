@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   static.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:30:00 by jchene            #+#    #+#             */
-/*   Updated: 2022/01/10 13:32:17 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/10 13:17:44 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/10 14:35:16 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-t_msh	*st_mini(void)
+char	*ft_strdup(char *s)
 {
-	static t_msh	mini;
+	int		len;
+	char	*cpy;
 
-	return (&mini);
-}
-
-t_start	*st_words(void)
-{
-	static t_start	words;
-
-	if (words.init != 1)
-	{
-		words.init = 1;
-		words.first = NULL;
-	}
-	return (&words);
+	if (s == NULL)
+		return (NULL);
+	len = ft_strlen(s) + 1;
+	cpy = malloc(sizeof(char) * len);
+	if (cpy == NULL)
+		return (NULL);
+	ft_memcpy(cpy, s, len);
+	return (cpy);
 }

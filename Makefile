@@ -11,9 +11,11 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_calloc.c\
 			./lib/ft_charset.c\
 			./lib/ft_memset.c\
+			./lib/ft_memcpy.c\
 			./lib/ft_newarray.c\
 			./lib/ft_strlcpy.c\
 			./lib/ft_strlen.c\
+			./lib/ft_strdup.c\
 			# ./srcs/parsing.c\
 			# ./lib/ft_lst_count_occur.c\
 			# ./lib/ft_lst_elem_join.c\
