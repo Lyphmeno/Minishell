@@ -4,8 +4,9 @@ HEADER	=	./headers/minishell.h
 
 SRCS	=	./srcs/minishell.c\
 			./srcs/static.c\
-			./builtin/bin_echo.c\
-			./builtin/bin_pwd.c\
+			./builtin/btn_echo.c\
+			./builtin/btn_pwd.c\
+			./builtin/btn_env.c\
 			./env/get_env.c\
 			./env/parsing_env.c\
 			./lib/ft_calloc.c\

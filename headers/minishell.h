@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/10 15:42:13 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/12 13:55:25 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	parsing_base(void);
 // BUILTIN
 int		bin_pwd(void);
 void	bin_echo(char *text, int nl);
+void	print_env(t_env *env);
 // ENV
 t_env	*parse_env(char **envp);
 void	add_env(char *name, char *value, t_env **env);
