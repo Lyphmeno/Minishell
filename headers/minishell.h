@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/12 13:55:25 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/12 16:16:22 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_msh
 // STATIC
 t_msh	*st_mini(void);
 t_start	*st_words(void);
-t_env	*st_env(void);
 // LIB
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
@@ -97,10 +96,15 @@ void	parsing_base(void);
 // BUILTIN
 int		bin_pwd(void);
 void	bin_echo(char *text, int nl);
-void	print_env(t_env *env);
+void	btn_env(t_env *env);
+void	btn_unset(char *key, t_env **env);
+void	btn_export(char *src, t_env **env);
 // ENV
 t_env	*parse_env(char **envp);
 void	add_env(char *name, char *value, t_env **env);
 char	*get_env(char *name, t_env *env);
+char	*get_key(char *envp);
+char	*get_value(char *envp);
+int		get_env_index(char *name, t_env *env);
 
 #endif

@@ -7,6 +7,8 @@ SRCS	=	./srcs/minishell.c\
 			./builtin/btn_echo.c\
 			./builtin/btn_pwd.c\
 			./builtin/btn_env.c\
+			./builtin/btn_export.c\
+			./builtin/btn_unset.c\
 			./env/get_env.c\
 			./env/parsing_env.c\
 			./lib/ft_calloc.c\

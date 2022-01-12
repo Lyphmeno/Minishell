@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   btn_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 11:44:40 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/12 16:17:13 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/12 14:20:09 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/12 14:48:24 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-char	*get_env(char *name, t_env *env)
-{
-	while (env != NULL)
-	{
-		if (ft_strcmp(name, env->key) == 0)
-			return (env->value);
-		env = env->next;
-	}
-	return (NULL);
-}
-
-int	get_env_index(char *name, t_env *env)
+int		check_syntax(char *src)
 {
 	int	i;
 
 	i = 0;
-	while (env != NULL)
+	while (src[i] != '\0')
 	{
-		if (ft_strcmp(name, env->key) == 0)
-			return (i);
-		env = env->next;
+		if (src[i] == '=')
+			return (1);
 		i++;
 	}
-	return (-1);
+	return (0);
+}
+
+void	btn_export(char *src, t_env **env)
+{
+	char	*key;
+	char	*value;
+
+	if (check_syntax(src) == 0)
+		return ;
+	key = get_key(src);
+	value = get_value(src);
+	btn_unset(key, env);
+	add_env(key, value, env);
+	free(key);
+	free(value);
 }

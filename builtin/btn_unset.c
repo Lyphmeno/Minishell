@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                          :+:      :+:    :+:   */
+/*   btn_unset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/10 11:44:40 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/12 16:17:13 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/12 14:32:28 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/12 17:01:21 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-char	*get_env(char *name, t_env *env)
+void	btn_unset(char *key, t_env **env)
 {
-	while (env != NULL)
-	{
-		if (ft_strcmp(name, env->key) == 0)
-			return (env->value);
-		env = env->next;
-	}
-	return (NULL);
-}
+	int		index;
+	// t_env	*tmp;
+	// t_env	*prev;
 
-int	get_env_index(char *name, t_env *env)
-{
-	int	i;
-
-	i = 0;
-	while (env != NULL)
-	{
-		if (ft_strcmp(name, env->key) == 0)
-			return (i);
-		env = env->next;
-		i++;
-	}
-	return (-1);
+	index = get_env_index(key, *env);
+	if (index < 0)
+		return ;
+	// tmp = *env;
+	// prev = NULL;
+	// if (env != NULL)
+	// {
+	// 	while (tmp != NULL && index > 1)
+	// 	{
+	// 		prev = tmp;
+	// 		tmp = tmp->next;
+	// 		index--;
+	// 	}
+	// 	prev->next = tmp->next;
+	// }
+	// free(tmp);
 }
