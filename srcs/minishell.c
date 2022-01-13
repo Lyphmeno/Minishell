@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/12 16:22:27 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/13 12:49:58 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv, char **envp)
 	env = NULL;
 	env = parse_env(envp);
 	btn_env(env);
+	btn_export("SHLL=2", &env);
 	btn_export("SHELL=2", &env);
 	btn_env(env);
 	// while (1)
