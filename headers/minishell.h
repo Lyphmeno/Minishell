@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/13 12:33:25 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/15 17:02:59 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
-# define ECHO "echo"
-# define CD "cd"
-# define PWD "pwd"
-# define EXPORT "export"
-# define UNSET "unset"
-# define ENV "env"
-# define EXIT "exit"
 
 typedef struct s_env
 {
@@ -77,6 +69,9 @@ int		ft_count_occur(char *str, char c);
 char	*ft_strdup(char *s);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_putstr_fd(char *str, int fd);
+char	*ft_strjoin(char *s1, char *s2);
+void	ft_strcat(char *dst, char *src);
 // LINKED LISTS
 int		ft_lstlen(t_start *start);
 int		ft_lst_count_occur(t_start *lst, char c);
@@ -99,6 +94,11 @@ void	bin_echo(char *text, int nl);
 void	btn_env(t_env *env);
 void	btn_unset(char *key, t_env **env);
 void	btn_export(char *src, t_env **env);
+int		btn_cd(t_env **env, char *path);
+int		btn_cd_old(t_env *env);
+int		btn_cd_home(t_env *env);
+int		btn_cd_dot(t_env *env);
+int		btn_cd_back(t_env *env);
 // ENV
 t_env	*parse_env(char **envp);
 void	add_env(char *name, char *value, t_env **env);

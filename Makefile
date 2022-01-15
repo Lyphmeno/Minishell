@@ -4,6 +4,8 @@ HEADER	=	./headers/minishell.h
 
 SRCS	=	./srcs/minishell.c\
 			./srcs/static.c\
+			./builtin/btn_cd.c\
+			./builtin/btn_cd_back.c\
 			./builtin/btn_echo.c\
 			./builtin/btn_pwd.c\
 			./builtin/btn_env.c\
@@ -16,6 +18,9 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_memset.c\
 			./lib/ft_memcpy.c\
 			./lib/ft_newarray.c\
+			./lib/ft_putstr_fd.c\
+			./lib/ft_strcat.c\
+			./lib/ft_strjoin.c\
 			./lib/ft_strlcpy.c\
 			./lib/ft_strcmp.c\
 			./lib/ft_strlen.c\
