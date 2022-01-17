@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:00:39 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/17 16:15:03 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/17 16:34:11 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	*get_key(char *envp)
 		key[i] = envp[i];
 		i++;
 	}
-	key[i] = '\0';
 	return (key);
 }
 
@@ -48,7 +47,6 @@ char	*get_value(char *envp)
 			value[j] = envp[i + j];
 			j++;
 	}
-	value[j] = '\0';
 	return (value);
 }
 
