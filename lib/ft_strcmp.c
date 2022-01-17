@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argc.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/10 15:40:51 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/10 15:41:57 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../headers/minishell.h"
 
-int	main(int argc, char **argv)
+int	ft_strcmp(char *s1, char *s2)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (-129);
+	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+		i++;
+	return ((int)s1[i] - (int)s2[i]);
 }

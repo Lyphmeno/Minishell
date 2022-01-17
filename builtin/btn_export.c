@@ -1,20 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argc.c                                             :+:      :+:    :+:   */
+/*   btn_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/12 14:20:09 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/13 12:33:28 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../headers/minishell.h"
 
-int	main(int argc, char **argv)
+int		check_syntax(char *src)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
+	int	i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		if (src[i] == '=')
+			return (1);
+		i++;
+	}
 	return (0);
+}
+
+void	btn_export(char *src, t_env **env)
+{
+	char	*key;
+	char	*value;
+
+	if (check_syntax(src) == 0)
+		return ;
+	key = get_key(src);
+	value = get_value(src);
+	btn_unset(key, env);
+	add_env(key, value, env);
+	free(key);
+	free(value);
 }

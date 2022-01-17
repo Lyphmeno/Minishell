@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argc.c                                             :+:      :+:    :+:   */
+/*   bin_pwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/30 15:40:42 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/10 11:43:23 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../headers/minishell.h"
 
-int	main(int argc, char **argv)
+int	bin_pwd(void)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
+	char	repo[MAX_PATH];
+
+	if (getcwd(repo, MAX_PATH))
+		return (-1);
+	printf("%s\n", repo);
 	return (0);
 }

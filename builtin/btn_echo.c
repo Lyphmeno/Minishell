@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argc.c                                             :+:      :+:    :+:   */
+/*   bin_echo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/29 16:09:56 by hlevi             #+#    #+#             */
+/*   Updated: 2021/11/30 15:45:38 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../headers/minishell.h"
 
-int	main(int argc, char **argv)
+void	bin_echo(char *text, int nl)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
-	return (0);
+	printf("%s", text);
+	if (nl == 0)
+		printf("\n");
 }

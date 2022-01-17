@@ -3,31 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2021/11/24 21:08:06 by jchene           ###   ########.fr       */
+/*   Updated: 2022/01/13 12:49:58 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-/*void	sighandler(int sig)
+int	main(int argc, char **argv, char **envp)
 {
+	t_env	*env;
 
-}*/
-
-int	main(int argc, char **argv, char **env)
-{
-	(void)env;
 	(void)argc;
 	(void)argv;
-	//signal(SIGINT, sighandler);
-	while (1)
-	{
-		st_mini()->line = readline("$> ");
-		parsing_base();
-		free(st_mini()->line);
-	}
+	env = NULL;
+	env = parse_env(envp);
+	btn_env(env);
+	btn_export("SHLL=2", &env);
+	btn_export("SHELL=2", &env);
+	btn_env(env);
+	// while (1)
+	// {
+	// 	st_mini()->line = readline("$> ");
+	// 	//parsing_base();
+	// 	free(st_mini()->line);
+	// }
 	return (0);
 }

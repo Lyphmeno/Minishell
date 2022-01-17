@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argc.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/15 15:58:47 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/15 15:58:58 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../headers/minishell.h"
 
-int	main(int argc, char **argv)
+void	ft_strcat(char *dst, char *src)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
-	return (0);
+	int		i;
+	int		j;
+
+	i = 0;
+	j = ft_strlen(dst);
+	while (src[i])
+	{
+		dst[j] = src[i];
+		i++;
+		j++;
+	}
+	dst[j] = '\0';
 }

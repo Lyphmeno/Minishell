@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_occur.c                                   :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 17:02:33 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/27 19:46:05 by jchene           ###   ########.fr       */
+/*   Created: 2022/01/15 15:57:18 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/15 15:59:23 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-//Count occurences of char c in char *str
-int	ft_count_occur(char *str, char c)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int	occur_nb;
-	int	i;
+	char	*str;
 
-	occur_nb = 0;
-	i = 0;
+	if (!(s1 && s2))
+		return (NULL);
+	str = ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (0);
-	while (str[i])
-	{
-		if (str[i] == c)
-			occur_nb++;
-		i++;
-	}
-	return (occur_nb);
+	ft_strcat(str, s1);
+	ft_strcat(str, s2);
+	return (str);
 }

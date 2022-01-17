@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argc.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/10 13:17:44 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/10 14:35:16 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../headers/minishell.h"
 
-int	main(int argc, char **argv)
+char	*ft_strdup(char *s)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
-	return (0);
+	int		len;
+	char	*cpy;
+
+	if (s == NULL)
+		return (NULL);
+	len = ft_strlen(s) + 1;
+	cpy = malloc(sizeof(char) * len);
+	if (cpy == NULL)
+		return (NULL);
+	ft_memcpy(cpy, s, len);
+	return (cpy);
 }

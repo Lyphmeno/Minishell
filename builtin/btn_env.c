@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   argc.c                                             :+:      :+:    :+:   */
+/*   btn_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/12 13:54:24 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/12 14:44:47 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "../headers/minishell.h"
 
-int	main(int argc, char **argv)
+void	btn_env(t_env *env)
 {
-	(void)argv;
-	printf("%d\n", argc - 1);
-	return (0);
+	int		i;
+	t_env	*tmp;
+
+	i = 0;
+	tmp = env;
+	if (tmp != NULL)
+	{
+		while (tmp->next != NULL)
+		{
+			printf("%s=%s\n", tmp->key, tmp->value);
+			tmp = tmp->next;
+			i++;
+		}
+		printf("%s=%s\n", tmp->key, tmp->value);
+		printf("\n========================================\n");
+	}
 }
