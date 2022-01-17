@@ -14,6 +14,7 @@ SRCS	=	./srcs/minishell.c\
 			./env/get_env.c\
 			./env/parsing_env.c\
 			./lib/ft_calloc.c\
+			./lib/ft_is_digit.c\
 			./lib/ft_charset.c\
 			./lib/ft_memset.c\
 			./lib/ft_memcpy.c\
