@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:00:39 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/13 12:33:20 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/17 16:15:03 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	*get_key(char *envp)
 	i = 0;
 	while (envp[i] != '=')
 		i++;
-	key = malloc(sizeof(char) * (i + 1));
-	if (!key)
-		return (NULL);
+	key = ft_calloc(sizeof(char), (i + 1));
 	i = 0;
 	while (envp[i] != '=')
 	{
@@ -44,9 +42,7 @@ char	*get_value(char *envp)
 	while (envp[i] != '=')
 		i++;
 	i++;
-	value = malloc(sizeof(char) * (ft_strlen(envp) + 1));
-	if (!value)
-		return (NULL);
+	value = ft_calloc(sizeof(char), (ft_strlen(envp) + 1));
 	while (envp[i + j])
 	{
 			value[j] = envp[i + j];
@@ -61,9 +57,7 @@ void	add_env(char *name, char *value, t_env **env)
 	t_env	*new;
 	t_env	*count;
 
-	new = (t_env *)malloc(sizeof(t_env));
-	if (new == NULL)
-		return ;
+	new = (t_env *)ft_calloc(sizeof(t_env), 1);
 	new->key = ft_strdup(name);
 	new->value = ft_strdup(value);
 	if (*env == NULL)

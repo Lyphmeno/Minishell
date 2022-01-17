@@ -13,6 +13,7 @@ SRCS	=	./srcs/minishell.c\
 			./builtin/btn_unset.c\
 			./env/get_env.c\
 			./env/parsing_env.c\
+			./free/free_env.c\
 			./lib/ft_calloc.c\
 			./lib/ft_is_digit.c\
 			./lib/ft_charset.c\

@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/17 12:43:26 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/17 16:12:17 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ char	*get_env(char *name, t_env *env);
 char	*get_key(char *envp);
 char	*get_value(char *envp);
 int		get_env_index(char *name, t_env *env);
+// FREE
+void	free_env(t_env *env);
 
 #endif
