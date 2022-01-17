@@ -1,23 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   btn_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/12 14:20:09 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/13 12:33:28 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+int		check_syntax(char *src)
 {
-	int		i;
+	int	i;
 
 	i = 0;
-	while (str[i])
+	while (src[i] != '\0')
+	{
+		if (src[i] == '=')
+			return (1);
 		i++;
-	return (i);
+	}
+	return (0);
+}
+
+void	btn_export(char *src, t_env **env)
+{
+	char	*key;
+	char	*value;
+
+	if (check_syntax(src) == 0)
+		return ;
+	key = get_key(src);
+	value = get_value(src);
+	btn_unset(key, env);
+	add_env(key, value, env);
+	free(key);
+	free(value);
 }

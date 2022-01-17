@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/15 15:52:34 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/15 16:29:54 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+void	ft_putstr_fd(char *str, int fd)
 {
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (str != NULL)
+	{
+		write(fd, str, ft_strlen(str));
+		write(fd, "\n", 1);
+	}
 }

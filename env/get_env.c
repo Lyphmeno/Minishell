@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/10 11:44:40 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/12 16:17:13 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+char	*get_env(char *name, t_env *env)
 {
-	int		i;
+	while (env != NULL)
+	{
+		if (ft_strcmp(name, env->key) == 0)
+			return (env->value);
+		env = env->next;
+	}
+	return (NULL);
+}
+
+int	get_env_index(char *name, t_env *env)
+{
+	int	i;
 
 	i = 0;
-	while (str[i])
+	while (env != NULL)
+	{
+		if (ft_strcmp(name, env->key) == 0)
+			return (i);
+		env = env->next;
 		i++;
-	return (i);
+	}
+	return (-1);
 }

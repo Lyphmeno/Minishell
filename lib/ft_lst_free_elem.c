@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lst_free_elem.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/29 02:10:40 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/29 03:00:18 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+int	ft_lst_free_elem(t_elem *elem, t_start *lst)
 {
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+//WORK IN PROGRESS HERE
 }

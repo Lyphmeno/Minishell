@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/15 15:57:18 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/15 15:59:23 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int		i;
+	char	*str;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (!(s1 && s2))
+		return (NULL);
+	str = ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!str)
+		return (0);
+	ft_strcat(str, s1);
+	ft_strcat(str, s2);
+	return (str);
 }

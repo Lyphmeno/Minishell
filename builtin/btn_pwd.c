@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   bin_pwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/30 15:40:42 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/10 11:43:23 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+int	bin_pwd(void)
 {
-	int		i;
+	char	repo[MAX_PATH];
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (getcwd(repo, MAX_PATH))
+		return (-1);
+	printf("%s\n", repo);
+	return (0);
 }

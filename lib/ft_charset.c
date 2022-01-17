@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_charset.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/24 18:58:19 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/24 19:01:51 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+//Check if char 'c' is in 'charset' //Return 1 if 'c' is in 'charset'
+int	ft_charset(char *charset, char c)
 {
-	int		i;
+	int	i;
 
+	if (!charset)
+		return (0);
 	i = 0;
-	while (str[i])
+	while (charset[i])
+	{
+		if (charset[i] == c)
+			return (1);
 		i++;
-	return (i);
+	}
+	return (0);
 }

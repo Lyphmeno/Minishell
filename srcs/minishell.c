@@ -6,28 +6,29 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/11/18 17:06:55 by hlevi            ###   ########.fr       */
-=======
-/*   Updated: 2021/11/17 15:45:18 by jchene           ###   ########.fr       */
->>>>>>> c7c5b20725f36838f4766931d0dda4f3d21e1c19
+/*   Updated: 2022/01/17 13:18:28 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	main(int argc, char **argv, char **env)
+int	main(int argc, char **argv, char **envp)
 {
-	t_msh	mini;
+	t_env	*env;
 
-	(void)env;
 	(void)argc;
 	(void)argv;
-	while (1)
-	{
-		mini.line = readline("$> ");
-		parsing_base(&mini);
-		free(mini.line);
-	}
+	env = NULL;
+	env = parse_env(envp);
+	btn_env(env);
+	btn_export("SHLL=2", &env);
+	btn_export("SHELL=2", &env);
+	btn_env(env);
+	// while (1)
+	// {
+	// 	st_mini()->line = readline("$> ");
+	// 	//parsing_base();
+	// 	free(st_mini()->line);
+	// }
 	return (0);
 }

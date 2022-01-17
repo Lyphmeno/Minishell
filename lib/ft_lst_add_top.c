@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lst_add_top.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/24 14:25:57 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/24 14:35:27 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+void	ft_lst_add_front(t_elem *elem, t_start *start)
 {
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (start->first == NULL)
+		start->first = elem;
+	else
+	{
+		elem->next = start->first;
+		start->first = elem;
+	}
 }

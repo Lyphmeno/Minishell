@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   argc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/24 16:54:32 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/25 12:20:18 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../headers/minishell.h"
+#include <stdio.h>
 
-int	ft_strlen(char *str)
+int	main(int argc, char **argv)
 {
-	int		i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	(void)argv;
+	printf("%d\n", argc - 1);
+	return (0);
 }

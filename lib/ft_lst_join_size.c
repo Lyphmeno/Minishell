@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lst_join_size.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/27 19:59:05 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 20:01:18 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+int	ft_lst_join_size(t_elem *start, t_elem *stop)
 {
-	int		i;
+	int		len;
+	t_elem	*tmp;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	len = 0;
+	tmp = start;
+	if (!tmp)
+		return (0);
+	while (tmp != stop)
+	{
+		len += ft_strlen(tmp->word);
+		tmp = tmp->next;
+	}
+	len += ft_strlen(tmp->word);
+	return (len);
 }

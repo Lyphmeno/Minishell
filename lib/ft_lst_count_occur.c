@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lst_count_occur.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:10 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:34 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/24 19:10:14 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 17:07:39 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+//Count occurences of char c in every char * of list lst
+int	ft_lst_count_occur(t_start *lst, char c)
 {
-	size_t	i;
-	char	*tmp;
+	int		occur_nb;
+	t_elem	*tmp;
 
-	i = 0;
-	if (!src && !dst)
+	occur_nb = 0;
+	tmp = lst->first;
+	if (!tmp)
 		return (0);
-	tmp = (char *)src;
-	while (src[i] && i < dstsize - 1 && dstsize > 0)
+	while (tmp)
 	{
-		dst[i] = tmp[i];
-		i++;
+		occur_nb += ft_count_occur(tmp->word, c);
+		tmp = tmp->next;
 	}
-	if (dstsize > 0)
-		dst[i] = '\0';
-	return (ft_strlen((char *)src));
+	return (occur_nb);
 }

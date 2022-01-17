@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lst_next_occur.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:29:22 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/24 14:35:39 by hlevi            ###   ########.fr       */
+/*   Created: 2021/11/24 19:15:26 by jchene            #+#    #+#             */
+/*   Updated: 2021/11/27 19:46:15 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_strlen(char *str)
+t_elem	*ft_lst_next_occur(t_elem *elem, char c)
 {
-	int		i;
+	t_elem	*tmp;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	tmp = elem;
+	if (!tmp)
+		return (NULL);
+	while (tmp)
+	{
+		if (ft_charset(tmp->word, c))
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
 }
