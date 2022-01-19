@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:32:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/13 12:46:58 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/19 13:42:31 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	remove_node(t_env **env, t_env *toDel)
 		toDel->next->prev = toDel->prev;
 	if (toDel->prev != NULL)
 		toDel->prev->next = toDel->next;
+	free(toDel->key);
+	free(toDel->value);
 	free(toDel);
 }
 
@@ -39,7 +41,7 @@ void	btn_unset(char *key, t_env **env)
 	while (i < index && current != NULL)
 	{
 		current = current->next;
-		i++;		
+		i++;
 	}
 	if (current == NULL)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/17 16:12:17 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/19 13:17:58 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		btn_cd_dot(t_env *env);
 int		btn_cd_back(t_env *env);
 // ENV
 t_env	*parse_env(char **envp);
-void	add_env(char *name, char *value, t_env **env);
+void	add_env(char *envkey, char *envalue, t_env **env);
 char	*get_env(char *name, t_env *env);
 char	*get_key(char *envp);
 char	*get_value(char *envp);

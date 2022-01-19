@@ -6,13 +6,13 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:20:09 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/13 12:33:28 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/19 13:26:21 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int		check_syntax(char *src)
+int	check_syntax(char *src)
 {
 	int	i;
 
@@ -37,6 +37,4 @@ void	btn_export(char *src, t_env **env)
 	value = get_value(src);
 	btn_unset(key, env);
 	add_env(key, value, env);
-	free(key);
-	free(value);
 }

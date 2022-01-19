@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 12:00:39 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/17 16:34:11 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/19 13:26:11 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ char	*get_value(char *envp)
 	return (value);
 }
 
-void	add_env(char *name, char *value, t_env **env)
+void	add_env(char *envkey, char *envalue, t_env **env)
 {
 	t_env	*new;
 	t_env	*count;
 
 	new = (t_env *)ft_calloc(sizeof(t_env), 1);
-	new->key = ft_strdup(name);
-	new->value = ft_strdup(value);
+	new->key = envkey;
+	new->value = envalue;
 	if (*env == NULL)
 	{
 		new->next = NULL;
@@ -78,13 +78,17 @@ void	add_env(char *name, char *value, t_env **env)
 t_env	*parse_env(char **envp)
 {
 	t_env	*env;
+	char	*newkey;
+	char	*newvalue;
 	int		i;
 
 	i = 0;
 	env = NULL;
 	while (envp[i])
 	{
-		add_env(get_key(envp[i]), get_value(envp[i]), &env);
+		newkey = get_key(envp[i]);
+		newvalue = get_value(envp[i]);
+		add_env(newkey, newvalue, &env);
 		if (env == NULL)
 			return (NULL);
 		i++;
