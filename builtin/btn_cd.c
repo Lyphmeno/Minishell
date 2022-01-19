@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:26:20 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/19 13:13:50 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/19 13:43:57 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	btn_cd_dot(t_env *env)
 	getcwd(path, MAX_PATH);
 	btn_unset("OLDPWD", &env);
 	add_env("OLDPWD", path, &env);
-	return (0); 
+	return (0);
 }
 
 int	btn_cd_home(t_env *env)
