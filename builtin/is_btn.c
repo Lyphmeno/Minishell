@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   btn_echo.c                                         :+:      :+:    :+:   */
+/*   is_btn.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 16:09:56 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/20 15:39:42 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/20 13:11:11 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/20 14:28:13 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	btn_echo(char *text, int nl)
+int	is_btn(char *arg)
 {
-	printf("%s", text);
-	if (nl == 0)
-		printf("\n");
+	if (ft_strcmp(arg, "echo") == 0 || ft_strcmp(arg, "env") == 0
+		|| ft_strcmp(arg, "exit") == 0 || ft_strcmp(arg, "export") == 0
+		|| ft_strcmp(arg, "cd") == 0 || ft_strcmp(arg, "pwd") == 0
+		|| ft_strcmp(arg, "unset") == 0)
+		return (1);
+	return (0);
 }

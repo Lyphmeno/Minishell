@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/19 13:44:11 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/20 15:39:51 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ t_elem	*ft_lst_next_occur(t_elem *elem, char c);
 // PARSING
 void	parsing_base(void);
 // BUILTIN
-int		bin_pwd(void);
-void	bin_echo(char *text, int nl);
+int		is_btn(char *arg);
+int		btn_pwd(void);
+void	btn_echo(char *text, int nl);
 void	btn_env(t_env *env);
 void	btn_unset(char *key, t_env **env);
 void	btn_export(char *src, t_env **env);
