@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:18:40 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/26 14:23:12 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/26 16:48:18 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ char	**ft_listotab(t_env *env)
 	i = 0;
 	if (env == NULL)
 		return (NULL);
-	tab = (char **)ft_calloc(sizeof(char *), get_size(env) + 1);
+	tab = (char **)ft_newarray(sizeof(char *),
+			get_size(env) + 1, sizeof(char*));
 	while (env)
 	{
 		tab[i] = ft_strjoinmore(env->key, "=", env->value);
