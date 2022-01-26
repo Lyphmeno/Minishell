@@ -23,10 +23,12 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_putstr_fd.c\
 			./lib/ft_strcat.c\
 			./lib/ft_strjoin.c\
+			./lib/ft_strjoinmore.c\
 			./lib/ft_strlcpy.c\
 			./lib/ft_strcmp.c\
 			./lib/ft_strlen.c\
 			./lib/ft_strdup.c\
+			./lib/ft_list_to_tab.c\
 			# ./srcs/parsing.c\
 			# ./lib/ft_lst_count_occur.c\
 			# ./lib/ft_lst_elem_join.c\

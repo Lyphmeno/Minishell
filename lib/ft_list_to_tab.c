@@ -1,23 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_btn.c                                           :+:      :+:    :+:   */
+/*   ft_list_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/20 13:11:11 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/26 13:58:55 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/26 14:18:40 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/26 14:23:12 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	is_btn(char *arg)
+int	get_size(t_env *env)
 {
-	if (ft_strcmp(arg, "echo") == 0 || ft_strcmp(arg, "env") == 0
-		|| ft_strcmp(arg, "exit") == 0 || ft_strcmp(arg, "export") == 0
-		|| ft_strcmp(arg, "cd") == 0 || ft_strcmp(arg, "pwd") == 0
-		|| ft_strcmp(arg, "unset") == 0)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (env != NULL)
+	{
+		env = env->next;
+		i++;
+	}
+	return (i);
+}
+
+char	**ft_listotab(t_env *env)
+{
+	int		i;
+	char	**tab;
+
+	i = 0;
+	if (env == NULL)
+		return (NULL);
+	tab = (char **)ft_calloc(sizeof(char *), get_size(env) + 1);
+	while (env)
+	{
+		tab[i] = ft_strjoinmore(env->key, "=", env->value);
+		env = env->next;
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
 }

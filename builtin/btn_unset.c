@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:32:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/19 13:44:03 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/26 13:53:39 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	remove_node(t_env **env, t_env *toDel)
 	free(toDel);
 }
 
-void	btn_unset(char *key, t_env **env)
+int	btn_unset(char *key, t_env **env)
 {
 	int		i;
 	int		index;
@@ -35,7 +35,7 @@ void	btn_unset(char *key, t_env **env)
 
 	index = get_env_index(key, *env);
 	if (index < 0 || env == NULL)
-		return ;
+		return (-1);
 	current = *env;
 	i = 1;
 	while (i < index && current != NULL)
@@ -44,6 +44,7 @@ void	btn_unset(char *key, t_env **env)
 		i++;
 	}
 	if (current == NULL)
-		return ;
+		return (-1);
 	remove_node(env, current);
+	return (0);
 }

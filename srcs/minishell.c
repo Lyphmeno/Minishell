@@ -6,11 +6,13 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/19 13:42:04 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/26 13:08:39 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
+
+int	g_exit;
 
 int	main(int argc, char **argv, char **envp)
 {

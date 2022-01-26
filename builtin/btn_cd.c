@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:26:20 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/19 13:43:57 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/26 14:17:07 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@ int	check_path(char *path)
 
 	if (access(path, F_OK) == -1)
 	{
-		sterror = ft_strjoin("minishell: cd: ", path);
-		sterror = ft_strjoin(sterror, "No such file or directory");
+		sterror = ft_strjoinmore("minishell: cd: ", path,
+				"No such file or directory");
 		ft_putstr_fd(sterror, 2);
 		free(sterror);
 		return (-1);
 	}
 	else if (access(path, X_OK) == -1)
 	{
-		sterror = ft_strjoin("minishell: cd: ", path);
-		sterror = ft_strjoin(sterror, "Permission denied");
+		sterror = ft_strjoinmore("minishell: cd: ", path, "Permission denied");
 		ft_putstr_fd(sterror, 2);
 		free(sterror);
 		return (-1);
