@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 16:40:52 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/29 02:14:24 by jchene           ###   ########.fr       */
+/*   Updated: 2022/01/29 17:34:13 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 int	ft_lst_join(void)
 {
-	t_elem	*open_word;
+	/*t_elem	*open_word;
 	t_elem	*close_word;
 	t_elem	*tmp;
 
 	tmp = st_words()->first;
+	if (((ft_lst_count_occur(st_words(), '"')) % 2) != 0)
+		return (-1);
 	if (((ft_lst_count_occur(st_words(), '"')) % 2) != 0)
 		return (-1);
 	while (tmp)
@@ -34,6 +36,6 @@ int	ft_lst_join(void)
 		close_word = tmp;
 		ft_lst_elem_join(st_words(), open_word, close_word);
 		tmp = tmp->next;
-	}
+	}*/
 	return (0);
 }

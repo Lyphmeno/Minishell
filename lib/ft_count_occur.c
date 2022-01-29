@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_count_occur.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/29 18:06:02 by jchene           ###   ########.fr       */
+/*   Created: 2022/01/26 11:30:52 by jchene            #+#    #+#             */
+/*   Updated: 2022/01/29 18:15:26 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	parsing_base(void)
+int	ft_count_occur(char *word, char c)
 {
-	if (ft_lst_split(st_mini()->line, ' ') == -1)
-		return (-1);
-	else
-		ft_lst_show(st_words());
-	if (!ft_lstlen(st_words()))
-		return (0);
-	ft_lst_free(st_words());
-	return (0);
+	int	occur;
+	int	i;
+
+	i = 0;
+	occur = 0;
+	while (word[i])
+	{
+		if (word[i] == c)
+			occur++;
+		i++;
+	}
+	return (occur);
 }
