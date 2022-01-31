@@ -6,13 +6,17 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/26 14:23:32 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/31 11:59:20 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 # define MAX_PATH 1024
+# define CMD 0
+# define ARG 1
+# define PIPE 2
+# define REDIR 3
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -34,6 +38,7 @@ typedef struct s_env
 typedef struct s_elem
 {
 	char			*word;
+	int				flag;
 	struct s_elem	*prev;
 	struct s_elem	*next;
 }				t_elem;
@@ -60,7 +65,6 @@ void	*ft_memset(void *b, int c, size_t len);
 void	**ft_newarray(size_t w, size_t h, size_t size);
 char	**ft_split(const char *str, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-int		ft_lst_split(const char *str, char c);
 int		ft_strlen(char *str);
 int		ft_charset(char *charset, char c);
 int		ft_count_occur(char *str, char c);
@@ -80,14 +84,16 @@ int		ft_lst_join_size(t_elem *start, t_elem *stop);
 int		ft_lst_elem_join(t_start *lst, t_elem *start, t_elem *stop);
 void	ft_lst_add_top(t_elem *elem, t_start *start);
 void	ft_lst_add_bot(t_elem *elem, t_start *start);
+void	ft_lst_free_elem(t_elem *elem, t_start *lst);
 void	ft_lst_free(t_start *start);
 void	ft_lst_show(t_start *stack);
 t_elem	*ft_lst_new_elem(char *word);
 t_elem	*ft_lst_before_last(t_start *start);
 t_elem	*ft_lst_last_elem(t_start *start);
 t_elem	*ft_lst_next_occur(t_elem *elem, char c);
+int		ft_lst_split(char *str, char c);
 // PARSING
-void	parsing_base(void);
+int		parsing_base(void);
 // BUILTIN
 int		is_btn(char *arg);
 int		btn_pwd(void);

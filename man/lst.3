@@ -1,0 +1,186 @@
+.TH Minishell 3 "November 28, 2021"
+.SH NAME
+Minishell - Linked Lists Functions
+.SH STRUCTURES SYNOPSIS
+
+.nf
+.B struct	t_start
+.fi
+.I int
+	   init
+.br
+.I t_elem
+	*first
+
+.nf
+.B struct	t_elem
+.fi
+.I char
+	  *word
+.br
+.I t_elem
+	*prev
+.br
+.I t_elem
+	*next
+
+
+.SH FUNCTIONS SYNOPSIS
+
+.I int
+.B ft_lstlen
+(
+.I t_start *start
+);
+
+
+.I int
+.B ft_lst_count_occur
+(
+.I t_start *lst, char c
+);
+
+.I int
+.B ft_lst_join
+(
+.I void
+);
+
+.I int
+.B ft_lst_join_size
+(
+.I t_elem *start, t_elem *stop
+);
+
+.I int
+.B ft_lst_elem_join
+(
+.I t_start *lst, t_elem *start, t_elem *stop
+);
+
+.I void
+.B ft_lst_add_top
+(
+.I t_elem *elem, t_start *start
+);
+
+.I void
+.B ft_lst_add_bot
+(
+.I t_elem *elem, t_start *start
+);
+
+.I void
+.B ft_lst_free
+(
+.I t_start *start
+);
+
+.I void
+.B ft_lst_show
+(
+.I t_start *stack
+);
+
+.I t_elem *
+.B ft_lst_new_elem
+(
+.I char *word
+);
+
+.I t_elem *
+.B ft_lst_before_last
+(
+.I t_start *start
+);
+
+.I t_elem *
+.B ft_lst_last_elem
+(
+.I t_start *start
+);
+
+.I t_elem *
+.B ft_lst_next_occur
+(
+.I t_elem *elem, char c
+);
+
+.SH STRUCTURES DESCRIPTIONS
+
+.B t_start
+structure is the starting element of any linked list.
+.fi
+.I init
+member is used by static functions to check for initialisation. ( see
+.I static.3
+)
+.fi
+.I first
+member contains the address of the first element in the list,
+.B NULL
+if there is none.
+
+.B t_elem
+structures are used as elements in linked lists.
+.fi
+.I word
+member contains the allocated address of the word contained in that element.
+.fi
+.I prev
+member contains the address of the previous element in the linked list,
+.B NULL
+if there is none.
+.fi
+.I next
+member contains the address of the next element in the linked list,
+.B NULL
+if there is none.
+
+.SH FUNCTIONS DESCRIPTIONS
+
+.B ft_lstlen
+takes as parameter a linked list starting point
+.I start
+and returs the number of elements in the list, 0 if
+.I start
+is
+.B NULL
+.
+
+.B ft_lst_count_occur
+takes as parameters a linked list starting point
+.I lst
+and a character
+.I c
+and returns the total number of occurences of character 
+.I c
+in every word of the list, returns 0 if
+.I lst
+does not contain any element.
+
+.B ft_lst_join
+join words containing quotes after first split.
+.fi
+Returns 0 is everything is good, -1 otherwise. 
+
+.B ft_lst_join_size
+takes as parameters a starting element
+.I start
+ans a stoping element
+.I stop
+and returns the number of elements between both, including them.
+.I start
+must be before
+.I stop
+in the list and both have to be in the same list.
+
+.B ft_lst_elem_join
+joins all elements between
+.I start
+and 
+.I stop
+included, in a single word.
+Free all joined elements and insert new element in their place.
+
+.B WORK IN PROGRESS HERE
