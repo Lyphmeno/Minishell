@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   free_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/31 12:08:29 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/17 13:40:57 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/17 16:38:23 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	g_exit;
-
-int	main(int argc, char **argv, char **envp)
+void	free_env(t_env *env)
 {
-	t_env	*env;
+	t_env	*tmp;
 
-	(void)argc;
-	(void)argv;
-	env = NULL;
-	env = parse_env(envp);
-	btn_env(env);
-	btn_export("SHLL=2", &env);
-	btn_unset("SHLL=2", &env);
-	btn_export("SHELL=2", &env);
-	btn_env(env);
-	while (1)
+	while (env->prev != NULL)
+		env = env->prev;
+	while (env != NULL)
 	{
-		st_mini()->line = readline("$> ");
-		if (parsing_base() == -1)
-			ft_putstr_fd("ERROR\n", 1);
-		free(st_mini()->line);
+		tmp = env->next;
+		if (env->key != NULL)
+			free(env->key);
+		if (env->value != NULL)
+			free(env->value);
+		free(env);
+		env = tmp;
 	}
-	return (0);
 }

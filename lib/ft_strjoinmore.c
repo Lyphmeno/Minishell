@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_strjoinmore.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/31 12:08:29 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/26 14:09:18 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/26 14:17:37 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	g_exit;
-
-int	main(int argc, char **argv, char **envp)
+char	*ft_strjoinmore(char *str1, char *str2, char *str3)
 {
-	t_env	*env;
+	char	*str;
 
-	(void)argc;
-	(void)argv;
-	env = NULL;
-	env = parse_env(envp);
-	btn_env(env);
-	btn_export("SHLL=2", &env);
-	btn_unset("SHLL=2", &env);
-	btn_export("SHELL=2", &env);
-	btn_env(env);
-	while (1)
-	{
-		st_mini()->line = readline("$> ");
-		if (parsing_base() == -1)
-			ft_putstr_fd("ERROR\n", 1);
-		free(st_mini()->line);
-	}
-	return (0);
+	str = ft_calloc(sizeof(char), (ft_strlen(str1) + ft_strlen(str2)
+				+ ft_strlen(str3)));
+	if (str == NULL)
+		return (NULL);
+	ft_strlcpy(str, str1, ft_strlen(str1) + 1);
+	ft_strlcpy(str, str2, ft_strlen(str) + ft_strlen(str2) + 1);
+	ft_strlcpy(str, str3, ft_strlen(str) + ft_strlen(str3) + 1);
+	return (str);
 }

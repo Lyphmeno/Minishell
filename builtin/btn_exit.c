@@ -6,13 +6,13 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 11:38:20 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/17 13:08:00 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/26 17:00:41 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int		is_string(char *str)
+int	is_string(char *str)
 {
 	int	i;
 
@@ -46,11 +46,11 @@ int	btn_exit(t_env *env, char *str)
 {
 	long long	exit_code;
 
-	if (str == NULL) // Cas sans argument donc derniere valeur de programme a return 
+	if (str == NULL) 
 		btn_exit_empty(env);
 	else if (argc > 1)
 		// Too many argument
-	else if (is_string(str) == 1) // Cas avec argument non numerique donc phrase d'erreur
+	else if (is_string(str) == 1)
 		// not numeric return 
 	else
 		// EXIT

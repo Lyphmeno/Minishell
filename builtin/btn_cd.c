@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 15:26:20 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/15 16:28:59 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/01/31 12:09:46 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ int	check_path(char *path)
 
 	if (access(path, F_OK) == -1)
 	{
-		sterror = ft_strjoin("minishell: cd: ", path);
-		sterror = ft_strjoin(sterror, "No such file or directory");
+		sterror = ft_strjoinmore("minishell: cd: ", path,
+				": No such file or directory");
 		ft_putstr_fd(sterror, 2);
 		free(sterror);
 		return (-1);
 	}
 	else if (access(path, X_OK) == -1)
 	{
-		sterror = ft_strjoin("minishell: cd: ", path);
-		sterror = ft_strjoin(sterror, "Permission denied");
+		sterror = ft_strjoinmore("minishell: cd: ", path,
+				": Permission denied");
 		ft_putstr_fd(sterror, 2);
 		free(sterror);
 		return (-1);
@@ -42,7 +42,7 @@ int	btn_cd_dot(t_env *env)
 	getcwd(path, MAX_PATH);
 	btn_unset("OLDPWD", &env);
 	add_env("OLDPWD", path, &env);
-	return (0); 
+	return (0);
 }
 
 int	btn_cd_home(t_env *env)

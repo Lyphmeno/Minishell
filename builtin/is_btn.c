@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   is_btn.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/31 12:08:29 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/20 13:11:11 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/26 13:58:55 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	g_exit;
-
-int	main(int argc, char **argv, char **envp)
+int	is_btn(char *arg)
 {
-	t_env	*env;
-
-	(void)argc;
-	(void)argv;
-	env = NULL;
-	env = parse_env(envp);
-	btn_env(env);
-	btn_export("SHLL=2", &env);
-	btn_unset("SHLL=2", &env);
-	btn_export("SHELL=2", &env);
-	btn_env(env);
-	while (1)
-	{
-		st_mini()->line = readline("$> ");
-		if (parsing_base() == -1)
-			ft_putstr_fd("ERROR\n", 1);
-		free(st_mini()->line);
-	}
+	if (ft_strcmp(arg, "echo") == 0 || ft_strcmp(arg, "env") == 0
+		|| ft_strcmp(arg, "exit") == 0 || ft_strcmp(arg, "export") == 0
+		|| ft_strcmp(arg, "cd") == 0 || ft_strcmp(arg, "pwd") == 0
+		|| ft_strcmp(arg, "unset") == 0)
+		return (1);
 	return (0);
 }

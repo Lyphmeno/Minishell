@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/02/02 12:45:07 by jchene           ###   ########.fr       */
+=======
+/*   Updated: 2022/01/31 11:59:20 by hlevi            ###   ########.fr       */
+>>>>>>> hugo
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +78,13 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_putstr_fd(char *str, int fd);
 char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoinmore(char *str1, char *str2, char *str3);
 void	ft_strcat(char *dst, char *src);
+<<<<<<< HEAD
 
+=======
+char	**ft_listotab(t_env *env);
+>>>>>>> hugo
 // LINKED LISTS
 int		ft_lstlen(t_start *start);
 int		ft_lst_count_occur(t_start *lst, char c);
@@ -95,11 +104,12 @@ int		ft_count_quotes(char *str, char c);
 int		line_split(char *str, char c);
 
 // BUILTIN
-int		bin_pwd(void);
-void	bin_echo(char *text, int nl);
+int		is_btn(char *arg);
+int		btn_pwd(void);
+void	btn_echo(char *text, int nl);
 void	btn_env(t_env *env);
-void	btn_unset(char *key, t_env **env);
-void	btn_export(char *src, t_env **env);
+int		btn_unset(char *key, t_env **env);
+int		btn_export(char *src, t_env **env);
 int		btn_cd(t_env **env, char *path);
 int		btn_cd_old(t_env *env);
 int		btn_cd_home(t_env *env);
@@ -108,10 +118,14 @@ int		btn_cd_back(t_env *env);
 
 // ENV
 t_env	*parse_env(char **envp);
-void	add_env(char *name, char *value, t_env **env);
+void	add_env(char *envkey, char *envalue, t_env **env);
 char	*get_env(char *name, t_env *env);
 char	*get_key(char *envp);
 char	*get_value(char *envp);
 int		get_env_index(char *name, t_env *env);
+// FREE
+void	free_env(t_env *env);
+// EXE
+void	exe_btn_all(t_env *env, char *cmd, char *arg);
 
 #endif

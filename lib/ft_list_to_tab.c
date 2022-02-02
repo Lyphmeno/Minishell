@@ -1,38 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ft_list_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/31 12:08:29 by hlevi            ###   ########.fr       */
+/*   Created: 2022/01/26 14:18:40 by hlevi             #+#    #+#             */
+/*   Updated: 2022/01/26 16:48:18 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	g_exit;
-
-int	main(int argc, char **argv, char **envp)
+int	get_size(t_env *env)
 {
-	t_env	*env;
+	int	i;
 
-	(void)argc;
-	(void)argv;
-	env = NULL;
-	env = parse_env(envp);
-	btn_env(env);
-	btn_export("SHLL=2", &env);
-	btn_unset("SHLL=2", &env);
-	btn_export("SHELL=2", &env);
-	btn_env(env);
-	while (1)
+	i = 0;
+	while (env != NULL)
 	{
-		st_mini()->line = readline("$> ");
-		if (parsing_base() == -1)
-			ft_putstr_fd("ERROR\n", 1);
-		free(st_mini()->line);
+		env = env->next;
+		i++;
 	}
-	return (0);
+	return (i);
+}
+
+char	**ft_listotab(t_env *env)
+{
+	int		i;
+	char	**tab;
+
+	i = 0;
+	if (env == NULL)
+		return (NULL);
+	tab = (char **)ft_newarray(sizeof(char *),
+			get_size(env) + 1, sizeof(char*));
+	while (env)
+	{
+		tab[i] = ft_strjoinmore(env->key, "=", env->value);
+		env = env->next;
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
 }

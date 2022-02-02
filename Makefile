@@ -13,6 +13,7 @@ SRCS	=	./srcs/minishell.c\
 			./builtin/btn_unset.c\
 			./env/get_env.c\
 			./env/parsing_env.c\
+			./free/free_env.c\
 			./lib/ft_calloc.c\
 			./lib/ft_is_digit.c\
 			./lib/ft_charset.c\
@@ -23,6 +24,7 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_putstr_fd.c\
 			./lib/ft_strcat.c\
 			./lib/ft_strjoin.c\
+			./lib/ft_strjoinmore.c\
 			./lib/ft_strlcpy.c\
 			./lib/ft_strcmp.c\
 			./lib/ft_strlen.c\
