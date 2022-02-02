@@ -16,6 +16,7 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_calloc.c\
 			./lib/ft_is_digit.c\
 			./lib/ft_charset.c\
+			./lib/ft_count_occur.c\
 			./lib/ft_memset.c\
 			./lib/ft_memcpy.c\
 			./lib/ft_newarray.c\
@@ -26,10 +27,7 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_strcmp.c\
 			./lib/ft_strlen.c\
 			./lib/ft_strdup.c\
-			./srcs/parsing.c\
-			./lib/ft_count_occur.c\
 			./lib/ft_lst_count_occur.c\
-			./lib/ft_lst_elem_join.c\
 			./lib/ft_lst_free_elem.c\
 			./lib/ft_lst_add_bot.c\
 			./lib/ft_lst_add_top.c\
@@ -39,9 +37,11 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_lst_new_elem.c\
 			./lib/ft_lstlen.c\
 			./lib/ft_lst_show.c\
-			./lib/ft_lst_join.c\
 			./lib/ft_split.c\
-			./lib/ft_lst_split.c\
+			./lib/ft_count_quotes.c\
+			./srcs/parsing.c\
+			./srcs/line_split.c\
+			
 
 CC		=	gcc
 

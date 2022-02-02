@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/01/29 18:05:37 by jchene           ###   ########.fr       */
+/*   Updated: 2022/02/02 12:45:07 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_msh
 // STATIC
 t_msh	*st_mini(void);
 t_start	*st_words(void);
+
 // LIB
 void	*ft_calloc(size_t count, size_t size);
 int		ft_is_digit(int c);
@@ -74,12 +75,10 @@ int		ft_strcmp(char *s1, char *s2);
 void	ft_putstr_fd(char *str, int fd);
 char	*ft_strjoin(char *s1, char *s2);
 void	ft_strcat(char *dst, char *src);
+
 // LINKED LISTS
 int		ft_lstlen(t_start *start);
 int		ft_lst_count_occur(t_start *lst, char c);
-int		ft_lst_join(void);
-int		ft_lst_join_size(t_elem *start, t_elem *stop);
-int		ft_lst_elem_join(t_start *lst, t_elem *start, t_elem *stop);
 void	ft_lst_add_top(t_elem *elem, t_start *start);
 void	ft_lst_add_bot(t_elem *elem, t_start *start);
 void	ft_lst_free_elem(t_elem *elem, t_start *lst);
@@ -89,9 +88,12 @@ t_elem	*ft_lst_new_elem(char *word);
 t_elem	*ft_lst_before_last(t_start *start);
 t_elem	*ft_lst_last_elem(t_start *start);
 t_elem	*ft_lst_next_occur(t_elem *elem, char c);
-int		ft_lst_split(char *str, char c);
+
 // PARSING
 int		parsing_base(void);
+int		ft_count_quotes(char *str, char c);
+int		line_split(char *str, char c);
+
 // BUILTIN
 int		bin_pwd(void);
 void	bin_echo(char *text, int nl);
@@ -103,6 +105,7 @@ int		btn_cd_old(t_env *env);
 int		btn_cd_home(t_env *env);
 int		btn_cd_dot(t_env *env);
 int		btn_cd_back(t_env *env);
+
 // ENV
 t_env	*parse_env(char **envp);
 void	add_env(char *name, char *value, t_env **env);

@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   ft_count_quotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
-/*   Updated: 2022/02/02 12:47:02 by jchene           ###   ########.fr       */
+/*   Created: 2022/02/01 15:56:30 by jchene            #+#    #+#             */
+/*   Updated: 2022/02/02 12:49:29 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	parsing_base(void)
+int	ft_count_quotes(char *str, char c)
 {
-	if (line_split(st_mini()->line, ' ') == -1)
-		return (-1);
-	else
-		ft_lst_show(st_words());
-	
-	if (!ft_lstlen(st_words()))
-		return (0);
-	ft_lst_free(st_words());
-	return (0);
+	int	open_d;
+	int open_s;
+	int i;
+	int	nb;
+
+	open_d = 0;
+	open_s = 0;
+	i = 0;
+	nb = 0;
+	while (str[i])
+	{
+		if (str[i] == '"' && open_s == 0)
+		{
+			open_d = (open_d - 1) * -1;
+			if (c == '"')
+				nb++;
+		}
+		else if (str[i] == '\'' && open_d == 0)
+		{
+			open_s = (open_s - 1) * -1;
+			if (c == '\'')
+				nb++;
+		}
+		i++;
+	}
+	return (nb);
 }

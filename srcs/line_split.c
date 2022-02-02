@@ -1,49 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_split.c                                     :+:      :+:    :+:   */
+/*   line_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:24:25 by jchene            #+#    #+#             */
-/*   Updated: 2022/01/29 18:14:23 by jchene           ###   ########.fr       */
+/*   Updated: 2022/02/02 13:09:16 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-static int	nbr_of_words(const char *str)
+static struct	s_now
 {
-	int	open_d_quot;
-	int	open_s_quot;
+	int	open_d;
+	int	open_s;
 	int	count;
 	int	word;
 	int	i;
+}				s_now;
 
-	open_d_quot = 0;
-	open_s_quot = 0;
-	count = 0;
-	word = 0;
-	i = 0;
-	while (str[i])
+static int	nbr_of_words(const char *str)
+{
+	ft_memset(&s_now, 0, sizeof(s_now));
+	while (str[s_now.i])
 	{
-		if (str[i] != ' ' && word == 0)
-			word = 1;
-		if (str[i] == '\'')
-			open_s_quot = (open_s_quot - 1) * -1;
-		else if (str[i] == '"')
-			open_d_quot = (open_d_quot - 1) * -1;
-		else if (str[i] == ' ' && open_d_quot == 0 && open_s_quot == 0)
+		if (str[s_now.i] != ' ' && s_now.word == 0)
+			s_now.word = 1;
+		if (str[s_now.i] == '\'' && s_now.open_d == 0)
+			s_now.open_s = (s_now.open_s - 1) * -1;
+		else if (str[s_now.i] == '"' && s_now.open_s == 0)
+			s_now.open_d = (s_now.open_d - 1) * -1;
+		else if (str[s_now.i] == ' ' && s_now.open_d == 0 && s_now.open_s == 0)
 		{
-			if (word)
-				count++;
-			word = 0;
+			if (s_now.word)
+				s_now.count++;
+			s_now.word = 0;
 		}
-		i++;
+		s_now.i++;
 	}
-	if (word)
-		count++;
-	return (count);
+	if (s_now.word)
+		s_now.count++;
+	return (s_now.count);
 }
 
 static int	word_size(const char *str)
@@ -57,9 +56,9 @@ static int	word_size(const char *str)
 	size = 0;
 	while (*str && (*str != ' ' || open_d_quot == 1 || open_s_quot == 1))
 	{
-		if (*str == '\'')
+		if (*str == '\'' && open_d_quot == 0)
 			open_s_quot = (open_s_quot - 1) * -1;
-		if (*str == '"')
+		if (*str == '"' && open_s_quot == 0)
 			open_d_quot = (open_d_quot - 1) * -1;
 		str++;
 		size++;
@@ -67,7 +66,7 @@ static int	word_size(const char *str)
 	return (size);
 }
 
-int	ft_lst_split(char *str, char c)
+int	line_split(char *str, char c)
 {
 	int		j;
 	int		nb_words;
@@ -77,8 +76,10 @@ int	ft_lst_split(char *str, char c)
 	j = 0;
 	if (!str)
 		return (-1);
-	if ((ft_count_occur(str, '\'') % 2 == 1)
-		|| (ft_count_occur(str, '"') % 2 == 1))
+	//printf("--dq%d\n", ft_count_quotes(str, '"'));
+	//printf("--sq%d\n", ft_count_quotes(str, '\''));
+	if ((ft_count_quotes(str, '\'') % 2 == 1)
+		|| (ft_count_quotes(str, '"') % 2 == 1))
 		return (-1);
 	nb_words = nbr_of_words(str);
 	while (nb_words > 0)
