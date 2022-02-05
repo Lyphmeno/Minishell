@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/02/02 12:45:07 by jchene           ###   ########.fr       */
-=======
-/*   Updated: 2022/01/31 11:59:20 by hlevi            ###   ########.fr       */
->>>>>>> hugo
+/*   Updated: 2022/02/04 19:43:40 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +76,8 @@ void	ft_putstr_fd(char *str, int fd);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strjoinmore(char *str1, char *str2, char *str3);
 void	ft_strcat(char *dst, char *src);
-<<<<<<< HEAD
-
-=======
 char	**ft_listotab(t_env *env);
->>>>>>> hugo
+
 // LINKED LISTS
 int		ft_lstlen(t_start *start);
 int		ft_lst_count_occur(t_start *lst, char c);
@@ -125,6 +118,7 @@ char	*get_value(char *envp);
 int		get_env_index(char *name, t_env *env);
 // FREE
 void	free_env(t_env *env);
+
 // EXE
 void	exe_btn_all(t_env *env, char *cmd, char *arg);
 

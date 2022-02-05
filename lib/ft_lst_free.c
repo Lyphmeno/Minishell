@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:11:07 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/25 12:22:00 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/02/04 15:45:11 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ void	ft_lst_free(t_start *start)
 	t_elem	*last;
 
 	len = ft_lstlen(start) - 1;
-	last = ft_lst_last_elem(start);
 	while (len-- > 0)
 	{
 		last = ft_lst_last_elem(start);
 		ft_lst_before_last(start)->next = NULL;
+		free(last->word);
 		free(last);
 	}
+	free(start->first->word);
 	free(start->first);
 	start->first = NULL;
 }

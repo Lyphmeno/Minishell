@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 16:30:35 by hlevi             #+#    #+#             */
-/*   Updated: 2022/02/02 12:47:02 by jchene           ###   ########.fr       */
+/*   Updated: 2022/02/04 22:26:29 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int	parsing_base(void)
 	if (!ft_lstlen(st_words()))
 		return (0);
 	ft_lst_free(st_words());
+	
 	return (0);
 }
+

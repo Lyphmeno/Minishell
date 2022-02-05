@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_label.c                                     :+:      :+:    :+:   */
+/*   expand_label.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 17:18:06 by jchene            #+#    #+#             */
-/*   Updated: 2022/01/30 17:25:15 by jchene           ###   ########.fr       */
+/*   Created: 2022/02/04 15:47:14 by jchene            #+#    #+#             */
+/*   Updated: 2022/02/04 15:54:09 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_lst_label(t_start *start)
+int	expand_label(t_start *start)
 {
+	t_elem	*tmp;
+
+	(void)tmp;
+	(void)start;
 	return (0);
 }

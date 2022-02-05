@@ -6,7 +6,7 @@
 /*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 12:24:25 by jchene            #+#    #+#             */
-/*   Updated: 2022/02/02 13:09:16 by jchene           ###   ########.fr       */
+/*   Updated: 2022/02/04 19:43:53 by jchene           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ int	line_split(char *str, char c)
 	j = 0;
 	if (!str)
 		return (-1);
-	//printf("--dq%d\n", ft_count_quotes(str, '"'));
-	//printf("--sq%d\n", ft_count_quotes(str, '\''));
 	if ((ft_count_quotes(str, '\'') % 2 == 1)
 		|| (ft_count_quotes(str, '"') % 2 == 1))
 		return (-1);

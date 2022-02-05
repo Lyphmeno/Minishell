@@ -43,6 +43,7 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_count_quotes.c\
 			./srcs/parsing.c\
 			./srcs/line_split.c\
+			./srcs/expand_label.c\
 			
 
 CC		=	gcc
