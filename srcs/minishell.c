@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 13:33:04 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/01 18:51:56 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,15 @@ void	true_readline(t_env	**env)
 		add_history(line);
 		if (line[0])
 		{
-			parsing_base(line, &list);
-			ft_cmdtotab(msh, list);
-			if (msh->cmd)
+			// parsing_base(line, &list);
+			// ft_cmdtotab(msh, list);
+			msh = parse_all(line, env);
+			if (msh)
 				exe_base(env, msh);
 			wait(NULL);
 		}
-		free(line);
+		else
+			free(line);
 		line = readline("minishell$> ");
 	}
 	rl_clear_history();

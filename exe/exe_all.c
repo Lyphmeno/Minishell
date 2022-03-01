@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:01:07 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 13:49:19 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/01 18:04:47 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void	exe_path(char *tmp, t_msh *msh, t_env *env)
 	else
 	{
 		envtab = ft_envtotab(env);
-		argtab = duptwotab(msh->arg);
+		argtab = duptwotab(tmp, msh->arg);
+		free_exe(env, msh);
 		if (execve(tmp, argtab, envtab) == -1)
 		{
 			free(tmp);
-			free(envtab);
-			free(argtab);
+			free_twochar(envtab);
+			free_twochar(argtab);
 			exit(1);
 		}
 	}
@@ -41,7 +42,7 @@ void	exe_cmd(t_env **env, t_msh *msh)
 	char	*tmp;
 	char	**path;
 
-	path = ft_split(get_env("PATH", *env), ';');
+	path = ft_split(get_env("PATH", *env), ':');
 	tmp = NULL;
 	if (is_path(msh, env) == 1)
 	{

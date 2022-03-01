@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_join_size.c                                 :+:      :+:    :+:   */
+/*   ft_free_twochar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 19:59:05 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/27 20:01:18 by jchene           ###   ########.fr       */
+/*   Created: 2022/03/01 17:27:19 by hlevi             #+#    #+#             */
+/*   Updated: 2022/03/01 17:33:22 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_lst_join_size(t_elem *start, t_elem *stop)
+void	free_twochar(char **tab)
 {
-	int		len;
-	t_elem	*tmp;
+	int	i;
 
-	len = 0;
-	tmp = start;
-	if (!tmp)
-		return (0);
-	while (tmp != stop)
+	i = 0;
+	if (tab == NULL)
+		return ;
+	while (tab[i])
 	{
-		len += ft_strlen(tmp->word);
-		tmp = tmp->next;
+		free(tab[i]);
+		i++;
 	}
-	len += ft_strlen(tmp->word);
-	return (len);
+	free(tab);
 }

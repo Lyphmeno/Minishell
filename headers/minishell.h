@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:49:28 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 13:33:10 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/01 19:31:21 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,47 @@ typedef struct s_list
 typedef struct s_file
 {
 	char			*value;
-	int				*type;
+	int				type;
 	struct s_file	*next;
 	struct s_file	*prev;
 }				t_file;
 
 typedef struct s_msh
 {
-	char	*cmd;
-	char	**arg;
-	int		argnb;
-	int		input;
-	int		output;
-	int		pipein;
-	int		pipeout;
-	pid_t	pid;
+	char			*cmd;
+	char			**arg;
+	int				argnb;
+	int				input;
+	int				output;
+	int				pipein;
+	int				pipeout;
+	struct s_file	infile;
+	struct s_file	outfile;
+	pid_t			pid;
+	struct s_msh	*next;
+	struct s_msh	*prev;
 }			t_msh;
 
 // MAIN
 void		true_readline(t_env	**env);
+
+// PARSING
+t_msh		*parse_all(char *line, t_env **env);
+// VAR
+int			is_var(char *line);
+int			var_cmp(char c, char *line);
+// VAR HEREDOC
+char		*add_quotes(char *line);
+char		*add_doc(char **linetab, int num, int len);
+char		*var_heredoc(char *line);
+
+
 // LIB
 long long	ft_atoi(char *s);
 void		*ft_calloc(size_t count, size_t size);
 int			ft_charset(char *charset, char c);
-char		**duptwotab(char **tab);
+char		**duptwotab(char *tmp, char **tab);
+void		free_twochar(char **tab);
 int			ft_is_digit(int c);
 char		*ft_itoa(int n);
 char		**ft_envtotab(t_env *env);
@@ -99,19 +116,7 @@ void		ft_lst_add_bot(t_list **list, char *word);
 void		ft_lst_add_top(t_list **list, t_list *new);
 t_list		*ft_lst_new_elem(char *word);
 int			ft_lstlen(t_list *list);
-
-// int			ft_lst_count_occur(t_start *lst, char c);
-// int			ft_lst_join(void);
-// int			ft_lst_join_size(t_list *start, t_list *stop);
-// int			ft_lst_list_join(t_start *lst, t_list *start, t_list *stop);
-// void		ft_lst_free_list(t_list *list, t_start *lst);
-// void		ft_lst_free(t_start *start);
-// void		ft_lst_show(t_start *stack);
-// t_list		*ft_lst_before_last(t_start *start);
-// t_list		*ft_lst_last_elem(t_start *start);
-// t_list		*ft_lst_next_occur(t_list *list, char c);
-
-// PARSING
+// PARSING J
 int			parsing_base(char *line, t_list **list);
 // BUILTIN
 int			is_btn(char *arg);
@@ -136,10 +141,11 @@ int			get_env_index(char *name, t_env *env);
 void		set_env(char *name, char *content, t_env *env);
 void		env_export(t_env *env);
 // FREE
-void		free_env(t_env *env);
-void		free_msh(t_msh *msh);
-void		free_lst(t_list *lst);
 void		free_all(t_env *env, t_msh *msh);
+void		free_env(t_env *env);
+void		free_exe(t_env *env, t_msh *msh);
+void		free_lst(t_list *lst);
+void		free_msh(t_msh *msh);
 // EXE
 void		exe_cmd(t_env **env, t_msh *msh);
 void		exe_all(t_env **env, t_msh *msh);

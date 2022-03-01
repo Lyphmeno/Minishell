@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:44:22 by hlevi             #+#    #+#             */
-/*   Updated: 2022/02/10 13:44:51 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/01 17:48:30 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	ft_printarray(char **array)
 		printf("tab[%d]%s\n", i, array[i]);
 		i++;
 	}
+	printf("tab[%d]%s\n", i, array[i]);
 }

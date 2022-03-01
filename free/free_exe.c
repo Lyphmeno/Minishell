@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_set_next.c                                  :+:      :+:    :+:   */
+/*   free_exe.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jchene <jchene@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/28 15:03:46 by jchene            #+#    #+#             */
-/*   Updated: 2021/11/29 02:09:30 by jchene           ###   ########.fr       */
+/*   Created: 2022/03/01 18:02:32 by hlevi             #+#    #+#             */
+/*   Updated: 2022/03/01 18:04:28 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	ft_lst_set_next(t_elem *elem, t_elem *previous, t_start *lst)
+void	free_exe(t_env *env, t_msh *msh)
 {
-	elem->next = previous->next;
-	elem->prev = previous;
-	previous->next->prev = elem;
-	previous->next = elem;
-	return (0);
+	free_env(env);
+	free_msh(msh);
+	rl_clear_history();
 }

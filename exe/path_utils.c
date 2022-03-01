@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 12:02:00 by hlevi             #+#    #+#             */
-/*   Updated: 2022/02/28 12:55:06 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/01 15:14:52 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	*get_path(t_msh *msh, char **path)
 		error_msg(msh->cmd, ": Path not set");
 		return (NULL);
 	}
-	while (path[i] != NULL)
+	while (path[i])
 	{
 		pathline = ft_strjoins(path[i++], "/", msh->cmd);
 		if (check_path(msh->cmd, pathline) == -1)

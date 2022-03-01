@@ -4,6 +4,8 @@ HEADER	=	./headers/minishell.h
 
 SRCS	=	./srcs/minishell.c\
 			./srcs/parsing.c\
+			./parsing/parse_all.c
+			./parsing/var.c
 			./builtin/btn_cd.c\
 			./builtin/btn_cd_back.c\
 			./builtin/btn_echo.c\
@@ -21,6 +23,7 @@ SRCS	=	./srcs/minishell.c\
 			./exe/path_utils.c\
 			./free/free_all.c\
 			./free/free_env.c\
+			./free/free_exe.c\
 			./free/free_lst.c\
 			./free/free_msh.c\
 			./lib/ft_atoi.c\
@@ -29,6 +32,7 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_is_digit.c\
 			./lib/ft_list_to_tab.c\
 			./lib/ft_duptwotab.c\
+			./lib/ft_free_twochar.c\
 			./lib/ft_charset.c\
 			./lib/ft_memset.c\
 			./lib/ft_memcpy.c\
@@ -50,14 +54,6 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_lst_add_top.c\
 			./lib/ft_lstlen.c\
 			./lib/ft_lst_new_elem.c\
-			# ./lib/ft_lst_count_occur.c\
-			./lib/ft_lst_elem_join.c\
-			./lib/ft_lst_free_elem.c\
-			./lib/ft_lst_before_last.c\
-			./lib/ft_lst_last_elem.c\
-			./lib/ft_lst_show.c\
-			./lib/ft_lst_join.c\
-			./lib/ft_lst_free.c\
 
 CC		=	gcc
 
