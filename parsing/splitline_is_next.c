@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_add_bot.c                                   :+:      :+:    :+:   */
+/*   splitline_is_next.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 15:29:40 by jchene            #+#    #+#             */
-/*   Updated: 2022/03/01 17:16:44 by hlevi            ###   ########.fr       */
+/*   Created: 2022/03/03 15:49:05 by hlevi             #+#    #+#             */
+/*   Updated: 2022/03/03 15:51:37 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	ft_lst_add_bot(t_list **list, char *word)
+int	is_sep(char c)
 {
-	t_list	*tmp;
-	t_list	*new;
+	if (c == '|' || c == '<' || c == '>')
+		return (1);
+	return (0);
+}
 
-	new = (t_list *)ft_calloc(sizeof(t_list), 1);
-	new->word = word;
-	new->next = NULL;
-	if (*list == NULL)
-	{
-		new->prev = NULL;
-		*list = new;
-	}
-	else
-	{
-		tmp = *list;
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		new->prev = tmp;
-		tmp->next = new;
-	}
+int	next_word(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[i])
+		return (1);
+	return (0);
 }

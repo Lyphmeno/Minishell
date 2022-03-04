@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 19:18:19 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 19:30:41 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/04 00:46:36 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*add_doc(char **linetab, int num, int len)
 	i = -1;
 	k = 0;
 	lineres = ft_calloc(sizeof(char), (num + len + 1));
-	while (linetab[i])
+	while (linetab[++i])
 	{
 		j = -1;
 		while (linetab[i][++j])
@@ -73,7 +73,7 @@ char	*var_heredoc(char *line)
 	linetab = splitline(line);
 	while (linetab[i])
 	{
-		if (i > 0 && ft_strcmp(line[i - 1], "<<") == 0)
+		if (i > 0 && ft_strcmp(linetab[i - 1], "<<") == 0)
 		{
 			linetab[i] = add_quotes(linetab[i]);
 			j += 2;

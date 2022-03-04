@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_add_top.c                                   :+:      :+:    :+:   */
+/*   init_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:25:57 by jchene            #+#    #+#             */
-/*   Updated: 2022/02/28 22:06:06 by hlevi            ###   ########.fr       */
+/*   Created: 2022/03/03 20:37:01 by hlevi             #+#    #+#             */
+/*   Updated: 2022/03/03 23:20:17 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	ft_lst_add_top(t_list **list, t_list *new)
+void	init_pipe(t_msh *msh)
 {
-	if ((*list) != NULL)
-		(*list)->prev = new;
-	(*list) = new;
+	int	fd[2];
+
+	if (msh->next == NULL)
+		return ;
+	if (pipe(fd) == -1)
+	{
+		ft_putendl_fd("minishell: pipe failed", 2);
+		return ;
+	}
+	msh->pipeout = fd[1];
+	msh->next->pipein = fd[0];
 }

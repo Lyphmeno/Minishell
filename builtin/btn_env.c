@@ -6,60 +6,44 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:54:24 by hlevi             #+#    #+#             */
-/*   Updated: 2022/02/17 15:14:05 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/03 22:45:10 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	env_export(t_env *env)
+int	btn_env_redir(t_env *env, t_msh *msh)
 {
-	int		i;
-	t_env	*tmp;
-
-	i = 0;
-	tmp = env;
-	if (tmp != NULL)
+	while (env != NULL)
 	{
-		while (tmp->next != NULL)
+		if (ft_strcmp(env->key, "?") != 0)
 		{
-			ft_putstr_fd("declare -x ", 1);
-			ft_putstr_fd(tmp->key, 1);
-			ft_putstr_fd("=", 1);
-			ft_putstr_fd(tmp->value, 1);
-			ft_putstr_fd("\n", 1);
-			tmp = tmp->next;
-			i++;
+			ft_putstr_fd(env->key, msh->output);
+			ft_putstr_fd("=", msh->output);
+			if (env->value != NULL)
+				ft_putendl_fd(env->value, msh->output);
+			else
+				ft_putstr_fd("\n", msh->output);
 		}
-		ft_putstr_fd("declare -x ", 1);
-		ft_putstr_fd(tmp->key, 1);
-		ft_putstr_fd("=", 1);
-		ft_putstr_fd(tmp->value, 1);
-		ft_putstr_fd("\n", 1);
+		env = env->next;
 	}
+	return (0);
 }
 
-void	btn_env(t_env *env)
+int	btn_env(t_env *env)
 {
-	int		i;
-	t_env	*tmp;
-
-	i = 0;
-	tmp = env;
-	if (tmp != NULL)
+	while (env != NULL)
 	{
-		while (tmp->next != NULL)
+		if (ft_strcmp(env->key, "?") != 0)
 		{
-			ft_putstr_fd(tmp->key, 1);
+			ft_putstr_fd(env->key, 1);
 			ft_putstr_fd("=", 1);
-			ft_putstr_fd(tmp->value, 1);
-			ft_putstr_fd("\n", 1);
-			tmp = tmp->next;
-			i++;
+			if (env->value != NULL)
+				ft_putendl_fd(env->value, 1);
+			else
+				ft_putstr_fd("\n", 1);
 		}
-		ft_putstr_fd(tmp->key, 1);
-		ft_putstr_fd("=", 1);
-		ft_putstr_fd(tmp->value, 1);
-		ft_putstr_fd("\n", 1);
+		env = env->next;
 	}
+	return (0);
 }

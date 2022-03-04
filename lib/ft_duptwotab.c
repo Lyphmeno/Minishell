@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 12:17:13 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 17:58:21 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/03 23:45:13 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,22 @@ static int	get_size(char **tab)
 	return (i);
 }
 
-char	**duptwotab(char *tmp, char **tab)
+char	**duptwotab(char **tab)
 {
 	int		i;
+	int		size;
 	char	**cpy;
 
 	i = 0;
-	cpy = ft_calloc(sizeof(char *), (get_size((tab) + 2)));
-	cpy[0] = ft_strdup(tmp);
+	size = get_size(tab);
+	cpy = malloc(sizeof(char *) * (size + 1));
+	if (cpy == NULL)
+		return (NULL);
 	while (tab[i] != NULL)
 	{
-		cpy[i + 1] = ft_strdup(tab[i]);
+		cpy[i] = ft_strdup(tab[i]);
 		i++;
 	}
-	cpy[i + 1] = NULL;
+	cpy[i] = NULL;
 	return (cpy);
 }

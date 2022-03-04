@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 17:53:27 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 18:51:56 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/04 01:05:16 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,14 @@ void	exe_base(t_env **env, t_msh *msh)
 void	true_readline(t_env	**env)
 {
 	t_msh	*msh;
-	t_list	*list;
 	char	*line;
 
-	line = readline("minishell$> ");
+	line = readline("minishell>$ ");
 	while (line)
 	{
-		msh = ft_calloc(sizeof(t_msh), 1);
-		list = ft_calloc(sizeof(t_list), 1);
 		add_history(line);
 		if (line[0])
 		{
-			// parsing_base(line, &list);
-			// ft_cmdtotab(msh, list);
 			msh = parse_all(line, env);
 			if (msh)
 				exe_base(env, msh);
@@ -65,7 +60,7 @@ void	true_readline(t_env	**env)
 		}
 		else
 			free(line);
-		line = readline("minishell$> ");
+		line = readline("minishell>$ ");
 	}
 	rl_clear_history();
 }
@@ -85,6 +80,7 @@ int	main(int argc, char **argv, char **envp)
 	env = parse_env(envp);
 	add_env("?", "0", &env);
 	shlvl(env);
+	sighandler(1);
 	true_readline(&env);
 	free_env(env);
 	write(1, "exit\n", 5);

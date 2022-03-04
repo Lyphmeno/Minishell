@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 17:27:19 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 17:33:22 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/04 00:08:19 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_twochar(char **tab)
 	i = 0;
 	if (tab == NULL)
 		return ;
-	while (tab[i])
+	while (tab[i] != NULL)
 	{
 		free(tab[i]);
 		i++;

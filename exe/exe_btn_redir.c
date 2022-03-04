@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exe_btn.c                                          :+:      :+:    :+:   */
+/*   exe_btn_redir.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:21:02 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/03 23:59:09 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/03 23:54:41 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
-
-int	check_nl_echo(char *string)
-{
-	int	i;
-
-	i = 1;
-	if (string[0] && string[0] == '-')
-	{
-		while (string[i] != '\0')
-		{
-			if (string[i] != 'n')
-				return (0);
-			i++;
-		}
-		return (1);
-	}
-	return (0);
-}
 
 static int	exe_cd(t_env **env, t_msh *msh)
 {
@@ -52,7 +34,7 @@ static int	exe_cd(t_env **env, t_msh *msh)
 	return (ext);
 }
 
-int	exe_echo(t_msh *msh)
+int	exe_echo_redir(t_msh *msh)
 {
 	int	ext;
 
@@ -62,13 +44,13 @@ int	exe_echo(t_msh *msh)
 		return (0);
 	}
 	if (check_nl_echo(msh->cmd[1]) == 0)
-		ext = btn_echo(msh, 0);
+		ext = btn_echo_redir(msh, msh->output, 0);
 	else
-		ext = btn_echo(msh, 1);
+		ext = btn_echo_redir(msh, msh->output, 1);
 	return (ext);
 }
 
-void	exe_btn(t_env **env, t_msh *msh)
+void	exe_btn_redir(t_env **env, t_msh *msh)
 {
 	int	ext;
 
@@ -76,22 +58,16 @@ void	exe_btn(t_env **env, t_msh *msh)
 	if (ft_strcmp(msh->cmd[0], "cd") == 0)
 		ext = exe_cd(env, msh);
 	if (ft_strcmp(msh->cmd[0], "echo") == 0)
-		ext = exe_echo(msh);
+		ext = exe_echo_redir(msh);
 	if (ft_strcmp(msh->cmd[0], "env") == 0)
-		ext = btn_env(*env);
+		ext = btn_env_redir(*env, msh);
 	if (ft_strcmp(msh->cmd[0], "exit") == 0)
 		ext = btn_exit(*env, msh);
 	if (ft_strcmp(msh->cmd[0], "export") == 0)
 		ext = btn_export(msh, env);
 	if (ft_strcmp(msh->cmd[0], "pwd") == 0)
-		ext = btn_pwd();
+		ext = btn_pwd_redir(msh);
 	if (ft_strcmp(msh->cmd[0], "unset") == 0)
 		ext = btn_unset(msh->cmd, env);
-	if (msh->next != NULL && msh->prev != NULL)
-	{
-		close(5);
-		free_all(*env, msh);
-		exit(ext);
-	}
 	g_exit = ext;
 }

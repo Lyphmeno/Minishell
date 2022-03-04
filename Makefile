@@ -3,29 +3,55 @@ NAME	=	minishell
 HEADER	=	./headers/minishell.h
 
 SRCS	=	./srcs/minishell.c\
-			./srcs/parsing.c\
-			./parsing/parse_all.c
-			./parsing/var.c
-			./builtin/btn_cd.c\
-			./builtin/btn_cd_back.c\
-			./builtin/btn_echo.c\
-			./builtin/btn_pwd.c\
-			./builtin/btn_env.c\
-			./builtin/btn_export.c\
-			./builtin/btn_exit.c\
-			./builtin/btn_unset.c\
-			./builtin/is_btn.c\
-			./env/get_env.c\
-			./env/parsing_env.c\
-			./exe/exe_all.c\
-			./exe/exe_btn.c\
-			./exe/exe_utils.c\
-			./exe/path_utils.c\
+			./signals/signals.c\
+			./redirfiles/check_files_utils.c\
+			./redirfiles/check_files.c\
+			./redirfiles/init_pipe.c\
+			./redirfiles/redir_all.c\
+			./parsing/delempty.c\
+			./parsing/handle_msh.c\
+			./parsing/handle_quotes_utils.c\
+			./parsing/handle_quotes.c\
+			./parsing/init_files.c\
+			./parsing/init_msh.c\
+			./parsing/parse_all_error.c\
+			./parsing/parse_all_utils_var.c\
+			./parsing/parse_all.c\
+			./parsing/splitline_check.c\
+			./parsing/splitline_is_next.c\
+			./parsing/splitline.c\
+			./parsing/tmp_get_var_quotes.c\
+			./parsing/tmp_get_var.c\
+			./parsing/tmp_var_utils.c\
+			./parsing/tmp_var.c\
+			./parsing/var_heredoc.c\
+			./parsing/var_loop.c\
+			./parsing/var.c\
+			./heredoc/heredoc_utils.c\
+			./heredoc/init_heredoc.c\
 			./free/free_all.c\
 			./free/free_env.c\
-			./free/free_exe.c\
-			./free/free_lst.c\
 			./free/free_msh.c\
+			./exe/close.c\
+			./exe/exe_all.c\
+			./exe/exe_btn_redir.c\
+			./exe/exe_btn.c\
+			./exe/exe_cmd.c\
+			./exe/path_utils.c\
+			./env/get_env.c\
+			./env/parsing_env.c\
+			./builtin/btn_cd_back.c\
+			./builtin/btn_cd.c\
+			./builtin/btn_echo.c\
+			./builtin/btn_env.c\
+			./builtin/btn_exit_too_big.c\
+			./builtin/btn_exit.c\
+			./builtin/btn_export_empty_utils.c\
+			./builtin/btn_export_empty.c\
+			./builtin/btn_export.c\
+			./builtin/btn_pwd.c\
+			./builtin/btn_unset.c\
+			./builtin/is_btn.c\
 			./lib/ft_atoi.c\
 			./lib/ft_itoa.c\
 			./lib/ft_calloc.c\
@@ -48,12 +74,6 @@ SRCS	=	./srcs/minishell.c\
 			./lib/ft_strlen.c\
 			./lib/ft_strdup.c\
 			./lib/ft_split.c\
-			./lib/ft_count_occur.c\
-			./lib/ft_lst_split.c\
-			./lib/ft_lst_add_bot.c\
-			./lib/ft_lst_add_top.c\
-			./lib/ft_lstlen.c\
-			./lib/ft_lst_new_elem.c\
 
 CC		=	gcc
 

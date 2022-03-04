@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 18:53:07 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 19:15:54 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/04 01:04:54 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,13 @@ int	var_error(char *line)
 		if (line[i])
 			i++;
 	}
+	return (0);
 }
 
 t_msh	*parse_all(char *line, t_env **env)
 {
 	t_msh	*msh;
-	char	**strtab;
+	char	**linetab;
 	char	**new;
 	char	*ext_code;
 
@@ -83,11 +84,11 @@ t_msh	*parse_all(char *line, t_env **env)
 		return (NULL);
 	}
 	line = var_heredoc(line);
-	strtab = splitline(line);
+	linetab = splitline(line);
 	free(line);
-	if (parsing_error(strtab))
-		return (parsing_exit(strtab));
-	new = var(strtab, new);
+	if (parsing_error(linetab))
+		return (parsing_exit(linetab));
+	new = var(linetab, env);
 	handle_quotes(new);
 	msh = handle_msh(new);
 	free_twochar(new);

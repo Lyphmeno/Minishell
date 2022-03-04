@@ -1,46 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_to_tab.c                                   :+:      :+:    :+:   */
+/*   btn_export_empty.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/26 14:18:40 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/03 23:44:11 by hlevi            ###   ########.fr       */
+/*   Created: 2022/03/03 22:45:23 by hlevi             #+#    #+#             */
+/*   Updated: 2022/03/03 23:16:12 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	get_size(t_env *env)
+int	env_size(t_env *env)
 {
 	int	i;
 
 	i = 0;
 	while (env != NULL)
 	{
-		env = env->next;
 		i++;
+		env = env->next;
 	}
 	return (i);
 }
 
-char	**ft_envtotab(t_env *env)
+char	**env_to_chartwo(t_env *env)
 {
 	int		i;
-	char	**tab;
+	char	**ret;
 
-	i = 0;
 	if (env == NULL)
 		return (NULL);
-	tab = (char **)ft_newarray(sizeof(char *),
-			get_size(env) + 1, sizeof(char *));
-	while (env)
+	i = 0;
+	ret = (char **)malloc(sizeof(char *) * (env_size(env) + 1));
+	while (env != NULL)
 	{
-		tab[i] = ft_strjoins(env->key, "=", env->value);
+		ret[i] = strjoinenv(env);
+		i++;
 		env = env->next;
+	}
+	ret[i] = NULL;
+	return (ret);
+}
+
+void	btn_export_empty(t_env *env, int output)
+{
+	char	**linetab;
+	int		i;
+
+	linetab = env_to_chartwo(env);
+	sort_env(linetab);
+	i = 1;
+	while (linetab[i])
+	{
+		write(output, "declare -x ", 11);
+		ft_putendl_fd(linetab[i], output);
 		i++;
 	}
-	tab[i] = NULL;
-	return (tab);
+	free_twochar(linetab);
 }

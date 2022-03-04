@@ -6,20 +6,11 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:20:09 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 13:48:06 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/03 23:16:52 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
-
-void	error_export(char *arg, char *msg)
-{
-	char	*true_msg;
-
-	true_msg = ft_strjoins("minishell: export: ", arg, msg);
-	ft_putstr_fd(true_msg, 2);
-	free(true_msg);
-}
 
 int	check_format(char *str)
 {
@@ -58,8 +49,8 @@ void	valid_export(t_msh *msh, t_env **env, int i)
 	char	*key;
 	char	*value;
 
-	key = get_key(msh->arg[i]);
-	value = get_value(msh->arg[i]);
+	key = get_key(msh->cmd[i]);
+	value = get_value(msh->cmd[i]);
 	if (get_env_index(key, *env) == -1)
 		add_env(key, value, env);
 	else
@@ -68,25 +59,52 @@ void	valid_export(t_msh *msh, t_env **env, int i)
 	free(value);
 }
 
-int	btn_export(t_msh *msh, t_env **env)
+int	btn_export_redir(t_msh *msh, t_env **env)
 {
 	int		i;
+	int		ext;
 
-	i = 0;
-	if (msh->argnb == 0)
+	i = 1;
+	ext = 0;
+	if (!msh->cmd[1])
 	{
-		env_export(*env);
-		return (g_exit);
+		btn_export_empty(*env, msh->output);
+		return (ext);
 	}
-	while (msh->arg[i])
+	while (msh->cmd[i])
 	{
-		if (check_syntax(msh->arg[i]) == -1)
+		if (check_syntax(msh->cmd[i]) == -1)
 		{
-			g_exit = -1;
+			ext = 1;
 		}
-		else if (check_format(msh->arg[i]) != 0)
+		else if (check_format(msh->cmd[i]) != 0)
 			valid_export(msh, env, i);
 		i++;
 	}
-	return (g_exit);
+	return (ext);
+}
+
+int	btn_export(t_msh *msh, t_env **env)
+{
+	int		i;
+	int		ext;
+
+	i = 1;
+	ext = 0;
+	if (!msh->cmd[1])
+	{
+		btn_export_empty(*env, 1);
+		return (ext);
+	}
+	while (msh->cmd[i])
+	{
+		if (check_syntax(msh->cmd[i]) == -1)
+		{
+			ext = 1;
+		}
+		else if (check_format(msh->cmd[i]) != 0)
+			valid_export(msh, env, i);
+		i++;
+	}
+	return (ext);
 }

@@ -6,65 +6,98 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:01:07 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 18:04:47 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/03 23:27:12 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-void	exe_path(char *tmp, t_msh *msh, t_env *env)
+void	exit_status(int ext, int btn)
 {
-	char	**envtab;
-	char	**argtab;
+	if (ext == 2)
+		g_exit = 130;
+	else if (ext == 131)
+		g_exit = 131;
+	else if (btn == 0)
+		g_exit = ext >> 8;
+}
 
-	if (tmp == NULL)
+void	last_cmd(t_msh *msh, t_env **env)
+{
+	char	**path;
+	char	*full_path;
+
+	path = ft_split(get_env("PATH", *env), ':');
+	full_path = get_path(msh, path);
+	free_twochar(path);
+	if (full_path)
 	{
-		free_all(env, msh);
-		exit(127);
+		if (get_env_index("_", *env) == -1)
+			add_env("_", full_path, env);
+		else
+			set_env("_", full_path, *env);
+		free(full_path);
 	}
 	else
 	{
-		envtab = ft_envtotab(env);
-		argtab = duptwotab(tmp, msh->arg);
-		free_exe(env, msh);
-		if (execve(tmp, argtab, envtab) == -1)
+		if (get_env_index("_", *env) == -1)
+			add_env("_", msh->cmd[0], env);
+		else
+			set_env("_", msh->cmd[0], *env);
+	}
+}
+
+void	handle_cmd(t_msh *msh, t_env **env, int *btn)
+{
+	msh->pid = 1;
+	if (is_btn(msh->cmd[0]) == 1 && msh->next == NULL && msh->prev == NULL)
+	{
+		*btn = 1;
+		if (check_rerror(msh))
+			return ;
+		last_cmd(msh, env);
+		if (msh->outfile != NULL)
+			exe_btn_redir(env, msh);
+		else
+			exe_btn(env, msh);
+	}
+	else if (msh->cmd[0] != NULL)
+	{
+		last_cmd(msh, env);
+		msh->pid = fork();
+		if (msh->pid == 0)
 		{
-			free(tmp);
-			free_twochar(envtab);
-			free_twochar(argtab);
-			exit(1);
+			sighandler(3);
+			exe_cmd(msh, env);
 		}
 	}
 }
 
-void	exe_cmd(t_env **env, t_msh *msh)
-{
-	char	*tmp;
-	char	**path;
-
-	path = ft_split(get_env("PATH", *env), ':');
-	tmp = NULL;
-	if (is_path(msh, env) == 1)
-	{
-		if (check_path(NULL, msh->cmd) == 1)
-			tmp = ft_strdup(msh->cmd);
-		else
-			wrong_path(msh, env, 0);
-	}
-	else
-		tmp = get_path(msh, path);
-	free(path);
-	exe_path(tmp, msh, *env);
-}
-
 void	exe_all(t_env **env, t_msh *msh)
 {
-	if (is_btn(msh->cmd) == 1)
+	int		ext;
+	int		btn;
+	t_msh	*tmpmsh;
+
+	ext = 0;
+	btn = 0;
+	tmpmsh = msh;
+	if (init_heredoc(msh, &ext) == 0)
+		return ;
+	while (msh != NULL)
 	{
-		exe_btn_all(env, msh);
+		msh->pid2 = getpid();
+		init_pipe(msh);
+		if (check_files(msh->infile, msh->outfile, msh) == 1)
+		{
+			g_exit = -1;
+			handle_cmd(msh, env, &btn);
+			close_fd(msh);
+			waitpid(msh->pid, &ext, 0);
+			exit_status(ext, btn);
+		}
+		close_fd(msh);
+		msh = msh->next;
 	}
-	else if (msh->cmd)
-	{
-		exe_cmd(env, msh);
-	}
+	close_all(tmpmsh);
 }

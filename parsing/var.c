@@ -5,37 +5,54 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 19:09:31 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/01 19:11:47 by hlevi            ###   ########.fr       */
+/*   Created: 2022/03/03 16:47:31 by hlevi             #+#    #+#             */
+/*   Updated: 2022/03/03 19:39:10 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/minishell.h"
 
-int	is_var(char *line)
+char	*rep(char *line, t_env **env)
 {
-	int	i;
+	char	*tmp;
+	int		len;
 
-	i = 0;
-	if (line[i] == '$' && line[i + 1]
-		&& (line[i + 1] == '?' || line[i + 1] == '{'))
-		return (1);
-	if (line[i] == '$' && line[i + 1]
-		&& !ft_is_vardel(line[i + 1], " ,.?/][}+=-*%$#@!\'\"\0"))
-		return (1);
-	return (0);
+	len = get_tmplen(line, env);
+	tmp = ft_calloc(sizeof(char), (len + 1));
+	fill_tmp(line, tmp, env);
+	if (line)
+		free(line);
+	if (tmp[0] == '\0')
+	{
+		free(tmp);
+		return (NULL);
+	}
+	return (tmp);
 }
 
-int	var_cmp(char c, char *line)
+char	**var(char **linetab, t_env **env)
 {
 	int	i;
+	int	j;
+	int	tmp[3];
 
 	i = 0;
-	while (line[i])
+	tmp[0] = 0;
+	tmp[1] = 1;
+	tmp[2] = 0;
+	while (linetab[i])
 	{
-		if (line[i] == c)
-			return (1);
+		j = 0;
+		while (linetab[i] && linetab[i][j])
+		{
+			if (tmp[0] == 0 && linetab[i][j] && is_var(&linetab[i][j]))
+				linetab[i] = rep(linetab[i], env);
+			if (linetab[i] == NULL)
+				tmp[2] = 1;
+			if (linetab[i])
+				j += var_loop(&linetab[i][j], env, tmp);
+		}
 		i++;
 	}
-	return (0);
+	return (delempty(linetab, tmp[2]));
 }
