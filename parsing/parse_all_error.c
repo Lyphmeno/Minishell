@@ -88,22 +88,22 @@ int	parsing_error(char **linetab)
 {
 	if (sep_error(linetab))
 	{
-		ft_putendl_fd("minishell: syntax error", 2);
+		ft_putendl_fd("minishell: syntax error 1", 2);
 		return (1);
 	}
 	if (endpipecmd_error(linetab))
 	{
-		ft_putendl_fd("minishell: syntax error", 2);
+		ft_putendl_fd("minishell: syntax error 2", 2);
 		return (1);
 	}
 	if (endsep_error(linetab))
 	{
-		ft_putendl_fd("minishell: syntax error", 2);
+		ft_putendl_fd("minishell: syntax error 3", 2);
 		return (1);
 	}
 	if (quotes_error(linetab))
 	{
-		ft_putendl_fd("minishell: syntax error", 2);
+		ft_putendl_fd("minishell: syntax error 4", 2);
 		return (1);
 	}
 	return (0);

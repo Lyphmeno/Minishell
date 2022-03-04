@@ -31,7 +31,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-int	g_exit;
+extern int	g_exit;
 
 typedef struct s_env
 {
@@ -284,5 +284,4 @@ void		close_fd_redir(t_msh *msh);
 void		redirect_input(t_msh *msh);
 void		redirect_output(t_msh *msh);
 void		redir(t_msh *msh);
-
 #endif

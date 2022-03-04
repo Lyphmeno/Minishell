@@ -12,6 +12,8 @@
 
 #include "../headers/minishell.h"
 
+int	g_exit = 0;
+
 void	shlvl(t_env *env)
 {
 	int		lvl;

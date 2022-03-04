@@ -73,4 +73,3 @@ void	sighandler(int mode)
 		signal(SIGQUIT, handler_heredoc);
 	}
 }
-

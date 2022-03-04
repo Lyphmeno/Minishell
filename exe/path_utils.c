@@ -119,4 +119,3 @@ char	*get_path(t_msh *msh, char **path)
 	}
 	return (send_err_msg(msh->cmd[0], 'C', msh->pid));
 }
-

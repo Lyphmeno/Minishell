@@ -24,7 +24,6 @@ void	check_loop_quotes(char c, int *tmp)
 		tmp[1] = 1;
 }
 
-
 int	is_loop(char *key, char *value)
 {
 	int	i;
