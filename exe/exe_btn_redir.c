@@ -64,7 +64,7 @@ void	exe_btn_redir(t_env **env, t_msh *msh)
 	if (ft_strcmp(msh->cmd[0], "exit") == 0)
 		ext = btn_exit(*env, msh);
 	if (ft_strcmp(msh->cmd[0], "export") == 0)
-		ext = btn_export(msh, env);
+		ext = btn_export_redir(msh, env);
 	if (ft_strcmp(msh->cmd[0], "pwd") == 0)
 		ext = btn_pwd_redir(msh);
 	if (ft_strcmp(msh->cmd[0], "unset") == 0)

@@ -98,7 +98,7 @@ clean:
 
 .PHONY:		fclean
 fclean:		clean
-			$(RM) $(NAME)
+			$(RM) $(NAME) heredoc_*
 
 .PHONY:		re
 re:			fclean all

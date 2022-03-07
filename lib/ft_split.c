@@ -64,7 +64,7 @@ char	**ft_split(const char *str, char c)
 	if (!str)
 		return (NULL);
 	nb_words = nbr_of_words(str, c);
-	tab = (char **)ft_newarray(sizeof(char *), nb_words + 1, sizeof(char *));
+	tab = (char **)ft_calloc(sizeof(char *), nb_words + 1);
 	while (i < nb_words)
 	{
 		while (str[j] == c && str[j])

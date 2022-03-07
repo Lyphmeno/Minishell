@@ -82,10 +82,10 @@ void	exe_cmd(t_msh *msh, t_env **env)
 	redir(msh);
 	if (is_btn(msh->cmd[0]) == 1)
 	{
-		free_twochar(path);
+		//free_twochar(path);
 		exe_btn(env, msh);
 	}
-	if (is_path(msh, env) == 1)
+	else if (is_path(msh, env) == 1)
 	{
 		if (check_path(NULL, msh->cmd[0], msh->pid) == 1)
 			tmp = ft_strdup(msh->cmd[0]);
