@@ -18,7 +18,7 @@ char	*read_heredoc(t_file *file)
 	char	*heredoc;
 	char	*tmp;
 
-	line = readline("> ");
+	line = readline("heredoc> ");
 	heredoc = NULL;
 	while (line != NULL)
 	{
@@ -31,7 +31,7 @@ char	*read_heredoc(t_file *file)
 		free(heredoc);
 		heredoc = tmp;
 		free(line);
-		line = readline("> ");
+		line = readline("heredoc> ");
 	}
 	return (heredoc);
 }

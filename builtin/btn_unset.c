@@ -48,7 +48,7 @@ int	btn_unset(char **keys, t_env **env)
 	int		index;
 	int		ext;
 
-	j = 0;
+	j = 1;
 	ext = 0;
 	while (keys[j] != NULL)
 	{

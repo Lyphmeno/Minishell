@@ -23,7 +23,7 @@ int	get_word_len(char *line)
 		return (check_quotes(line));
 	while (line[i] && line[i] != ' ' && !is_sep(line[i]))
 	{
-		if ((line[i] == '\'' || line[i] == '\'') && closed_quotes(&line[i]))
+		if ((line[i] == '\'' || line[i] == '\"') && closed_quotes(&line[i]))
 			i += check_quotes(&line[i]);
 		if (line[i] && line[i] != ' ' && !is_sep(line[i]))
 			i++;
