@@ -58,7 +58,6 @@ void	true_readline(t_env	**env)
 			msh = parse_all(line, env);
 			if (msh)
 				exe_base(env, msh);
-			wait(NULL);
 		}
 		else
 			free(line);

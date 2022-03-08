@@ -86,7 +86,6 @@ void	exe_all(t_env **env, t_msh *msh)
 		return ;
 	while (msh != NULL)
 	{
-		msh->pid2 = getpid();
 		init_pipe(msh);
 		if (check_files(msh->infile, msh->outfile, msh) == 1)
 		{

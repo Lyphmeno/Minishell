@@ -68,7 +68,6 @@ typedef struct s_msh
 	struct s_file	*infile;
 	struct s_file	*outfile;
 	pid_t			pid;
-	pid_t			pid2;
 	struct s_msh	*next;
 	struct s_msh	*prev;
 }			t_msh;
