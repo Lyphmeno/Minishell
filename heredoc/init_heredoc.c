@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 20:20:59 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/03 23:51:20 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:31:53 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*read_heredoc(t_file *file)
 	char	*heredoc;
 	char	*tmp;
 
-	line = readline("heredoc> ");
 	heredoc = NULL;
+	line = readline("> ");
 	while (line != NULL)
 	{
 		if (ft_strcmp(line, file->name) == 0)
@@ -31,7 +31,7 @@ char	*read_heredoc(t_file *file)
 		free(heredoc);
 		heredoc = tmp;
 		free(line);
-		line = readline("heredoc> ");
+		line = readline("> ");
 	}
 	return (heredoc);
 }
@@ -95,7 +95,7 @@ void	init_all_heredoc(t_file *infile, int *ext)
 int	init_heredoc(t_msh *msh, int *ext)
 {
 	int		status;
-	t_file	*begin;
+	t_file	*tmpfile;
 	t_msh	*tmpmsh;
 
 	status = g_exit;
@@ -103,9 +103,9 @@ int	init_heredoc(t_msh *msh, int *ext)
 	tmpmsh = msh;
 	while (msh != NULL)
 	{
-		begin = msh->infile;
+		tmpfile = msh->infile;
 		init_all_heredoc(msh->infile, ext);
-		msh->infile = begin;
+		msh->infile = tmpfile;
 		msh = msh->next;
 	}
 	if (g_exit != 130)

@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 20:31:01 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/03 23:50:44 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:25:46 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ char	*get_namedoc(void)
 
 char	*dup_doc(char *s)
 {
-	int		len;
+	int		size;
 	char	*cpy;
 
 	if (s == NULL)
 		return (NULL);
-	len = ft_strlen(s) + 2;
-	cpy = ft_calloc(sizeof(char), len);
+	size = ft_strlen(s) + 2;
+	cpy = ft_calloc(sizeof(char), size);
 	if (cpy == NULL)
 		return (NULL);
 	ft_strlcpy(cpy, s, ft_strlen(s) + 1);
-	cpy[len - 2] = '\n';
+	cpy[size - 2] = '\n';
 	return (cpy);
 }
 
