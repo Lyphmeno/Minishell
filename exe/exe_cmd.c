@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 20:39:06 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/03 23:47:04 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:47:42 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ void	exe_cmd(t_msh *msh, t_env **env)
 
 	if (msh->rerror == 1)
 		exit_rerror(msh, env);
-	path = ft_split(get_env("PATH", *env), ':');
 	tmp = NULL;
+	path = ft_split(get_env("PATH", *env), ':');
 	sighandler(2);
 	redir(msh);
 	if (is_btn(msh->cmd[0]) == 1)
 	{
-		//free_twochar(path);
+		free_twochar(path);
 		exe_btn(env, msh);
 	}
 	else if (is_path(msh, env) == 1)

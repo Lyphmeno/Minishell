@@ -6,7 +6,7 @@
 /*   By: hlevi <hlevi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:21:02 by hlevi             #+#    #+#             */
-/*   Updated: 2022/03/03 23:59:09 by hlevi            ###   ########.fr       */
+/*   Updated: 2022/03/09 13:47:36 by hlevi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	exe_btn(t_env **env, t_msh *msh)
 		ext = btn_pwd();
 	if (ft_strcmp(msh->cmd[0], "unset") == 0)
 		ext = btn_unset(msh->cmd, env);
-	if (msh->next != NULL && msh->prev != NULL)
+	if (msh->next != NULL || msh->prev != NULL)
 	{
 		close(5);
 		free_all(*env, msh);
