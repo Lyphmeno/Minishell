@@ -82,7 +82,7 @@ void	exe_cmd(t_msh *msh, t_env **env)
 	redir(msh);
 	if (is_btn(msh->cmd[0]) == 1)
 	{
-		//free_twochar(path);
+		free_twochar(path);
 		exe_btn(env, msh);
 	}
 	else if (is_path(msh, env) == 1)

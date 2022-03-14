@@ -44,19 +44,33 @@ int	check_syntax(char *src)
 	return (0);
 }
 
-void	valid_export(t_msh *msh, t_env **env, int i)
+int	valid_export(t_msh *msh, t_env **env, int i)
 {
 	char	*key;
 	char	*value;
+	char	*tmp;
+	int		ret;
 
+	ret = 0;
 	key = get_key(msh->cmd[i]);
 	value = get_value(msh->cmd[i]);
-	if (get_env_index(key, *env) == -1)
-		add_env(key, value, env);
+	if (ft_strcmp(key, "") == 0)
+	{
+		tmp = ft_strjoin("=", value);
+		error_export(tmp, ": not a valid identifier\n");
+		free(tmp);
+		ret = 1;
+	}
 	else
-		set_env(key, value, *env);
+	{
+		if (get_env_index(key, *env) == -1)
+			add_env(key, value, env);
+		else
+			set_env(key, value, *env);
+	}
 	free(key);
 	free(value);
+	return (ret);
 }
 
 int	btn_export_redir(t_msh *msh, t_env **env)
@@ -99,11 +113,9 @@ int	btn_export(t_msh *msh, t_env **env)
 	while (msh->cmd[i])
 	{
 		if (check_syntax(msh->cmd[i]) == -1)
-		{
 			ext = 1;
-		}
 		else if (check_format(msh->cmd[i]) != 0)
-			valid_export(msh, env, i);
+			ext = valid_export(msh, env, i);
 		i++;
 	}
 	return (ext);
