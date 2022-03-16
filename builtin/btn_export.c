@@ -36,7 +36,7 @@ int	check_syntax(char *src)
 		if (!((src[i] >= 'a' && src[i] <= 'z') || (src[i] >= 'A'
 					&& src[i] <= 'Z') || (src[i] == '_')))
 		{
-			error_export(src, ": not a valid identifier\n");
+			error_export(src, "': not a valid identifier\n");
 			return (-1);
 		}
 		i++;
@@ -57,7 +57,7 @@ int	valid_export(t_msh *msh, t_env **env, int i)
 	if (ft_strcmp(key, "") == 0)
 	{
 		tmp = ft_strjoin("=", value);
-		error_export(tmp, ": not a valid identifier\n");
+		error_export(tmp, "': not a valid identifier\n");
 		free(tmp);
 		ret = 1;
 	}
@@ -88,11 +88,9 @@ int	btn_export_redir(t_msh *msh, t_env **env)
 	while (msh->cmd[i])
 	{
 		if (check_syntax(msh->cmd[i]) == -1)
-		{
 			ext = 1;
-		}
 		else if (check_format(msh->cmd[i]) != 0)
-			valid_export(msh, env, i);
+			ext = valid_export(msh, env, i);
 		i++;
 	}
 	return (ext);

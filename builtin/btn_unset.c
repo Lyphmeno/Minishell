@@ -19,6 +19,23 @@ t_env	*first(t_env *env)
 	return (env);
 }
 
+int	check_syntax_unset(char *src)
+{
+	int		i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		if (!((src[i] >= 'a' && src[i] <= 'z') || (src[i] >= 'A'
+					&& src[i] <= 'Z') || (src[i] == '_')))
+		{
+			return (-1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 void	remove_node(t_env **env)
 {
 	t_env	*tmp1;
@@ -41,6 +58,21 @@ void	remove_node(t_env **env)
 		*env = first(tmp2);
 }
 
+int	valid_unset(char *key)
+{
+	int		ext;
+
+	ext = 0;
+	if (check_syntax_unset(key) == -1)
+	{
+		ft_putstr_fd("minishell: unset: `", 2);
+		ft_putstr_fd(key, 2);
+		ft_putendl_fd("': not a valid indentifier", 2);
+		ext = 1;
+	}
+	return (ext);
+}
+
 int	btn_unset(char **keys, t_env **env)
 {
 	int		i;
@@ -48,10 +80,11 @@ int	btn_unset(char **keys, t_env **env)
 	int		index;
 	int		ext;
 
-	j = 1;
+	j = 0;
 	ext = 0;
-	while (keys[j] != NULL)
+	while (keys[++j] != NULL)
 	{
+		ext = valid_unset(keys[j]);
 		index = get_env_index(keys[j], *env);
 		if (index < 0 || *env == NULL)
 			ext = 1;
@@ -65,7 +98,6 @@ int	btn_unset(char **keys, t_env **env)
 			ext = 1;
 		remove_node(env);
 		*env = first(*env);
-		j++;
 	}
 	return (ext);
 }
