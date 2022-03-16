@@ -16,7 +16,7 @@ void	error_export(char *arg, char *msg)
 {
 	char	*true_msg;
 
-	true_msg = ft_strjoins("minishell: export: ", arg, msg);
+	true_msg = ft_strjoins("minishell: export: `", arg, msg);
 	ft_putstr_fd(true_msg, 2);
 	free(true_msg);
 }
