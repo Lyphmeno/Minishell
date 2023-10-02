@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Minishell Project : <a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/cljbd5ceo007308mltneinai5/project/2353766" alt="hlevi's 42 minishell Score" /></a></a></h1>
+  <h1>Minishell Project :</a></a></h1>
   <p>Welcome to the Minishell project !</p>
   <p>This project focuses on writting your own shell (at least a mini version of one)</p>
   
